@@ -1,0 +1,6 @@
+framework module Pods_PhotoFlick {
+  umbrella header "Pods-PhotoFlick-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.2" xsi:schemaLocation="urn:oasis:names:tc:xliff:document:1.2 http://docs.oasis-open.org/xliff/v1.2/os/xliff-core-1.2-strict.xsd">
+  <file original="PhotoFlick/Base.lproj/Main.storyboard" source-language="en" target-language="en-IN" datatype="plaintext">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.3.1" build-num="11C504"/>
+    </header>
+    <body>
+      <trans-unit id="795-aP-rTP.text" xml:space="preserve">
+        <source>PHOTO FLICK</source>
+        <target>PHOTO FLICK</target>
+        <note>Class = "UILabel"; text = "PHOTO FLICK"; ObjectID = "795-aP-rTP";</note>
+      </trans-unit>
+      <trans-unit id="c4J-Nm-nsQ.placeholder" xml:space="preserve">
+        <source>Password</source>
+        <target>Password</target>
+        <note>Class = "UITextField"; placeholder = "Password"; ObjectID = "c4J-Nm-nsQ";</note>
+      </trans-unit>
+      <trans-unit id="hxQ-U1-PAl.normalTitle" xml:space="preserve">
+        <source>LOGIN</source>
+        <target>LOGIN</target>
+        <note>Class = "UIButton"; normalTitle = "LOGIN"; ObjectID = "hxQ-U1-PAl";</note>
+      </trans-unit>
+      <trans-unit id="wOQ-j3-MJ9.placeholder" xml:space="preserve">
+        <source>Username</source>
+        <target>Username</target>
+        <note>Class = "UITextField"; placeholder = "Username"; ObjectID = "wOQ-j3-MJ9";</note>
+      </trans-unit>
+      <trans-unit id="y2X-w1-UFe.text" xml:space="preserve">
+        <source>HOME</source>
+        <target>HOME</target>
+        <note>Class = "UILabel"; text = "HOME"; ObjectID = "y2X-w1-UFe";</note>
+      </trans-unit>
+    </body>
+  </file>
+  <file original="PhotoFlick/en.lproj/InfoPlist.strings" datatype="plaintext" source-language="en" target-language="en-IN">
+    <header>
+      <tool tool-id="com.apple.dt.xcode" tool-name="Xcode" tool-version="11.3.1" build-num="11C504"/>
+    </header>
+    <body>
+      <trans-unit id="CFBundleName" xml:space="preserve">
+        <source>PhotoFlick</source>
+        <note>Bundle name</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

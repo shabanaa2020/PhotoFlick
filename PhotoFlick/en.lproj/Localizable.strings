@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  PhotoFlick
+
+  Created by Shabana Sheik on 15/04/20.
+  Copyright © 2020 Shabana Sheik. All rights reserved.
+*/
+
+"emailErrorMessage" = "Please enter valid user name";
+"passwordErrorMessage" = "Please enter valid password";
+"emptyFieldsMessage" = "Fields cannot be empty";

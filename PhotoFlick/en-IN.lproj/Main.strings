@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "PHOTO FLICK"; ObjectID = "795-aP-rTP"; */
+"795-aP-rTP.text" = "PHOTO FLICK";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "c4J-Nm-nsQ"; */
+"c4J-Nm-nsQ.placeholder" = "Password";
+
+/* Class = "UIButton"; normalTitle = "LOGIN"; ObjectID = "hxQ-U1-PAl"; */
+"hxQ-U1-PAl.normalTitle" = "LOGIN";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "wOQ-j3-MJ9"; */
+"wOQ-j3-MJ9.placeholder" = "Username";
+
+/* Class = "UILabel"; text = "HOME"; ObjectID = "y2X-w1-UFe"; */
+"y2X-w1-UFe.text" = "HOME";
+
+"emailErrorMessage" = "Please enter valid user name";
+"passwordErrorMessage" = "Please enter valid password";
