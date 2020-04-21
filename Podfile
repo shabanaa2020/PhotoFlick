@@ -7,4 +7,5 @@ target 'PhotoFlick' do
 
   # Pods for PhotoFlick
 	pod 'OAuthSwift', '~> 2.0.0'
+  pod 'AAInfographics', :git => 'https://github.com/AAChartModel/AAChartKit-Swift.git'
 end

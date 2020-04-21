@@ -1,16 +1,28 @@
 PODS:
+  - AAInfographics (4.0.0)
   - OAuthSwift (2.0.0)
 
 DEPENDENCIES:
+  - AAInfographics (from `https://github.com/AAChartModel/AAChartKit-Swift.git`)
   - OAuthSwift (~> 2.0.0)
 
 SPEC REPOS:
   trunk:
     - OAuthSwift
 
+EXTERNAL SOURCES:
+  AAInfographics:
+    :git: https://github.com/AAChartModel/AAChartKit-Swift.git
+
+CHECKOUT OPTIONS:
+  AAInfographics:
+    :commit: a01c3d744167e0e830c22b6a4f0ef851192bee00
+    :git: https://github.com/AAChartModel/AAChartKit-Swift.git
+
 SPEC CHECKSUMS:
+  AAInfographics: bbeed03caece4ee3b5e557d734967394e9bcdb11
   OAuthSwift: 6805456763cf1c7ae0c16765257ed430b7aacae7
 
-PODFILE CHECKSUM: 669a598ba10c9d66d4d42ad6a065998c85a3a053
+PODFILE CHECKSUM: 9f16ea1347740ab03d8090d47f312ee99d7bc55d
 
 COCOAPODS: 1.8.4

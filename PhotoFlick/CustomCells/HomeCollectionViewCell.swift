@@ -15,4 +15,7 @@ class HomeCollectionViewCell: UICollectionViewCell {
         // Initialization code
     }
 
+    @IBAction func favouritesAction(_ sender: Any) {
+        
+    }
 }

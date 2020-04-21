@@ -65,30 +65,30 @@ class ViewController: UIViewController, SFSafariViewControllerDelegate {
             accessTokenUrl: "https://www.flickr.com/services/oauth/request_token",
             responseType:   "token"
         )
-        let safariVC = SFSafariViewController(url: NSURL(string: "https://www.flickr.com/services/oauth/authorize")! as URL)
-        safariVC.delegate = self
-        self.present(safariVC, animated: true, completion: nil)
-        oauthswift.authorizeURLHandler = SafariURLHandler(viewController: safariVC, oauthSwift: oauthswift)
+//        let safariVC = SFSafariViewController(url: NSURL(string: "https://www.flickr.com/services/oauth/authorize")! as URL)
+//        safariVC.delegate = self
+//        self.present(safariVC, animated: true, completion: nil)
+//        oauthswift.authorizeURLHandler = SafariURLHandler(viewController: safariVC, oauthSwift: oauthswift)
 
-//        let handle = oauthswift.authorize(
-//            withCallbackURL: URL(string: "PhotoFlick://oauth-callback/flickr")!,
-//            scope: "likes+comments", state:"flickr") { result in
-//            switch result {
-//            case .success(let (credential, response, parameters)):
-//              print(credential.oauthToken)
-//              // Do your request
-//            case .failure(let error):
-//              print(error.localizedDescription)
-//            }
-//        }
+        let _ = oauthswift.authorize(
+            withCallbackURL: URL(string: "PhotoFlick://oauth-callback/flickr")!,
+            scope: "likes+comments", state:"flickr") { result in
+            switch result {
+            case .success(let (credential, response, parameters)):
+              print(credential.oauthToken)
+              // Do your request
+            case .failure(let error):
+              print(error.localizedDescription)
+            }
+        }
     }
 
     @IBAction func onLoginAction(_ sender: Any) {
         resignFirstResponder()
         if validateFields() {
-            authenticate()
-//            guard let home = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
-//            self.navigationController?.pushViewController(home, animated: true)
+//            authenticate()
+            guard let home = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "HomeViewController") as? HomeViewController else { return }
+            self.navigationController?.pushViewController(home, animated: true)
         }
     }
     
