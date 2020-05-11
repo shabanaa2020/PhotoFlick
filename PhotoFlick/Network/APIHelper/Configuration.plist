@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>apiKey</key>
+	<string>1159067c8d72fb59a1664a54b8e16f1d</string>
+	<key>apiSecret</key>
+	<string>65ead63c79c0bfc9</string>
+	<key>OAuthBaseUrl</key>
+	<string>https://www.flickr.com/services/oauth</string>
+	<key>apiBase</key>
+	<string>https://api.flickr.com/services/rest/</string>
+	<key>apiFormat</key>
+	<string>&amp;format=json&amp;nojsoncallback=1</string>
+	<key>OAuthCallBackUrl</key>
+	<string>PhotoFlick://oauth-callback/flickr</string>
+</dict>
+</plist>

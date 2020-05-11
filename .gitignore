@@ -1,0 +1,15 @@
+Pods/Pods.xcodeproj/project.pbxproj
+Pods/Pods.xcodeproj/xcuserdata/udziamko.xcuserdatad/xcschemes/Pods-PhotoFlick.xcscheme
+Pods/Pods.xcodeproj/xcuserdata/udziamko.xcuserdatad/xcschemes/xcschememanagement.plist
+Pods/Target Support Files/Pods-PhotoFlick/Pods-PhotoFlick.release.xcconfig
+PhotoFlick.xcodeproj/xcuserdata/udziamko.xcuserdatad/xcschemes/xcschememanagement.plist
+PhotoFlick.xcworkspace/contents.xcworkspacedata
+PhotoFlick.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
+PhotoFlick.xcworkspace/xcuserdata/udziamko.xcuserdatad/UserInterfaceState.xcuserstate
+PhotoFlick.xcworkspace/xcuserdata/shabanasheik.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+PhotoFlick.xcodeproj/xcuserdata/shabanasheik.xcuserdatad/xcschemes/xcschememanagement.plist
+Podfile.lock
+Pods/
+PhotoFlick.xcworkspace/
+.DS_Store
+/Pods

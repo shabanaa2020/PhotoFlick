@@ -26,21 +26,51 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="51C-z7-Jgx">
-                                <rect key="frame" x="5" y="37.5" width="447" height="153.5"/>
+                                <rect key="frame" x="5" y="37.5" width="447" height="116.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="116.5" id="akP-lz-v35"/>
+                                </constraints>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TJ8-4D-NSS" customClass="CustomButton" customModule="PhotoFlick" customModuleProvider="target">
+                                <rect key="frame" x="156" y="168" width="145" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="145" id="8lm-nz-QXE"/>
+                                    <constraint firstAttribute="height" constant="34" id="Ftz-lY-9sz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <state key="normal" title="SAVE">
+                                    <color key="titleColor" red="0.69803921570000005" green="0.35294117650000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.69803921570000005" green="0.35294117650000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveBtnAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="THg-L6-wNr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="51C-z7-Jgx" firstAttribute="width" secondItem="nJk-yG-JYF" secondAttribute="width" multiplier="0.978118" id="Gwq-Pj-PLa"/>
-                            <constraint firstItem="51C-z7-Jgx" firstAttribute="height" secondItem="nJk-yG-JYF" secondAttribute="height" multiplier="0.71729" id="LZn-QF-XWM"/>
+                            <constraint firstAttribute="trailing" secondItem="51C-z7-Jgx" secondAttribute="trailing" constant="5" id="BGd-b8-Vnr"/>
                             <constraint firstItem="51C-z7-Jgx" firstAttribute="centerX" secondItem="nJk-yG-JYF" secondAttribute="centerX" id="ONP-1o-Aaa"/>
-                            <constraint firstAttribute="bottom" secondItem="51C-z7-Jgx" secondAttribute="bottom" constant="23" id="d9C-0c-6Rb"/>
+                            <constraint firstItem="TJ8-4D-NSS" firstAttribute="top" secondItem="51C-z7-Jgx" secondAttribute="bottom" constant="14" id="SUP-TU-mpE"/>
+                            <constraint firstItem="TJ8-4D-NSS" firstAttribute="centerX" secondItem="nJk-yG-JYF" secondAttribute="centerX" id="Snw-jh-3aa"/>
+                            <constraint firstAttribute="bottom" secondItem="TJ8-4D-NSS" secondAttribute="bottom" constant="12" id="XdS-OH-wuQ"/>
+                            <constraint firstAttribute="bottom" secondItem="51C-z7-Jgx" secondAttribute="bottom" constant="60" id="d9C-0c-6Rb"/>
                             <constraint firstItem="51C-z7-Jgx" firstAttribute="top" secondItem="URv-SG-gSi" secondAttribute="bottom" constant="8" symbolic="YES" id="iu4-ZJ-Kxe"/>
+                            <constraint firstItem="51C-z7-Jgx" firstAttribute="leading" secondItem="nJk-yG-JYF" secondAttribute="leading" constant="5" id="u02-cw-kXz"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -54,7 +84,10 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="-3060" y="-153"/>
+            <connections>
+                <outlet property="commentsTxtVw" destination="51C-z7-Jgx" id="QRQ-am-V6V"/>
+            </connections>
+            <point key="canvasLocation" x="-3060.144927536232" y="-153.34821428571428"/>
         </tableViewCell>
     </objects>
 </document>
