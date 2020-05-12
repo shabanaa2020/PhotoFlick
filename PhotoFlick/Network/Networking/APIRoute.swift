@@ -21,5 +21,5 @@ public enum HTTPNetworkRoute: String{
     case deleteComment = "flickr.photos.comments.deleteComment"
     case commentsList = "flickr.photos.comments.getList"
     case userId = "187826686@N03"
-    
+    case checkToken = "flickr.auth.oauth.checkToken"
 }

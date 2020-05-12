@@ -44,6 +44,7 @@ class Authorize {
             switch result {
             case .success(let (credential, _, _)):
                 debugPrint("token = \(credential.oauthToken)")
+                OauthService.shared.oauthswift = oauthswift
                 completion(credential.oauthToken, nil)
                 DataManager.access_token = credential.oauthToken
             case .failure(let error):

@@ -37,9 +37,17 @@ class DetailViewModel {
         completion()
     }
     
+    func checkToken(completion:@escaping (CheckAccessTokenModel?) -> ()) {
+        let checkTokenApiResource = PostFavouritesAPIResource(method: HTTPNetworkRoute.checkToken.rawValue, userId: nil)
+        checkTokenApiResource.checkAccessToken(urlString: checkTokenApiResource.mapUrl(parameters: mapCheckToken())) { (response, error) in
+            completion(response)
+        }
+    }
+    
     func addFavourite(photoId: String, completion:@escaping (AddFavourite?) -> ()) {
-        let favsPostApiResource = PostApiResource(method: HTTPNetworkRoute.addFavourite.rawValue, userId: nil)
-        favsPostApiResource.postService(urlString: favsPostApiResource.mapUrl(parameters: mapFavParams(with: photoId))) { (response, error) in
+        
+        let favsPostAPI = PostFavouritesAPIResource(method: HTTPNetworkRoute.removeFavourite.rawValue, userId: nil)
+        favsPostAPI.postService(urlString: favsPostAPI.mapUrl(parameters: mapFavParams(with: photoId))) { (response, error) in
             completion(response)
         }
     }
@@ -67,6 +75,11 @@ class DetailViewModel {
     
     private func mapFavParams(with photoId: String) -> String {
         let url = "&photo_id=\(photoId)"
+        return url
+    }
+    
+    private func mapCheckToken() -> String {
+        let url = "&oauth_token=\(DataManager.access_token)"
         return url
     }
     

@@ -79,6 +79,9 @@
 		5AD53EC124486D9D0038A950 /* View+Identifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD53EC024486D9D0038A950 /* View+Identifier.swift */; };
 		5AD53EC324486ED50038A950 /* Unknown.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5AD53EC224486ED50038A950 /* Unknown.jpg */; };
 		5AED2D302469401500E3628F /* FavouritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AED2D2F2469401500E3628F /* FavouritesViewController.swift */; };
+		9415FB5D246AB989008839D3 /* CheckAccessTokenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9415FB5C246AB989008839D3 /* CheckAccessTokenModel.swift */; };
+		9415FB5F246AD6DD008839D3 /* OauthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9415FB5E246AD6DD008839D3 /* OauthService.swift */; };
+		9415FB61246AD7CF008839D3 /* PostFavouritesAPIResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9415FB60246AD7CF008839D3 /* PostFavouritesAPIResource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -157,6 +160,9 @@
 		5AD53EC024486D9D0038A950 /* View+Identifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Identifier.swift"; sourceTree = "<group>"; };
 		5AD53EC224486ED50038A950 /* Unknown.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Unknown.jpg; sourceTree = "<group>"; };
 		5AED2D2F2469401500E3628F /* FavouritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesViewController.swift; sourceTree = "<group>"; };
+		9415FB5C246AB989008839D3 /* CheckAccessTokenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckAccessTokenModel.swift; sourceTree = "<group>"; };
+		9415FB5E246AD6DD008839D3 /* OauthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OauthService.swift; sourceTree = "<group>"; };
+		9415FB60246AD7CF008839D3 /* PostFavouritesAPIResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostFavouritesAPIResource.swift; sourceTree = "<group>"; };
 		CAF9C3F7D0B7553C654BAC40 /* Pods_PhotoFlick.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhotoFlick.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -186,6 +192,8 @@
 				5A547632244D906D009E41A1 /* Configuration.plist */,
 				5A2A94C8244F4FD000DB7328 /* Authorize.swift */,
 				5A2A94CA244F55FB00DB7328 /* DataManager.swift */,
+				9415FB5E246AD6DD008839D3 /* OauthService.swift */,
+				9415FB60246AD7CF008839D3 /* PostFavouritesAPIResource.swift */,
 			);
 			path = APIHelper;
 			sourceTree = "<group>";
@@ -222,6 +230,7 @@
 				5A2A94EB24520C0C00DB7328 /* PhotoModel.swift */,
 				5A25C5ED24609C7E00ECA8F7 /* AddFavouriteModel.swift */,
 				5ABD3A3524697500007BECFE /* CommentsModel.swift */,
+				9415FB5C246AB989008839D3 /* CheckAccessTokenModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -485,6 +494,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9415FB5D246AB989008839D3 /* CheckAccessTokenModel.swift in Sources */,
 				5AD53E992446DBFF0038A950 /* ViewController.swift in Sources */,
 				5A2A94C7244EDBF500DB7328 /* UIColor+Extension.swift in Sources */,
 				5A2A94CE244F5CDD00DB7328 /* LoginViewModel.swift in Sources */,
@@ -535,9 +545,11 @@
 				5A2A94DE2450806100DB7328 /* ApiResource.swift in Sources */,
 				5AD53E972446DBFF0038A950 /* SceneDelegate.swift in Sources */,
 				5A547658244E2944009E41A1 /* GraphCell.swift in Sources */,
+				9415FB5F246AD6DD008839D3 /* OauthService.swift in Sources */,
 				5A25C5E3245F8ADD00ECA8F7 /* Encoder.swift in Sources */,
 				5A25C5F024609E3A00ECA8F7 /* AlertView.swift in Sources */,
 				5A2A94E224509C5800DB7328 /* UserInfoModel.swift in Sources */,
+				9415FB61246AD7CF008839D3 /* PostFavouritesAPIResource.swift in Sources */,
 				5A25C5E8245FBA3900ECA8F7 /* FlickrPhotoResource.swift in Sources */,
 				5AD53EC124486D9D0038A950 /* View+Identifier.swift in Sources */,
 				5A2A94E82450C51300DB7328 /* APIError.swift in Sources */,
