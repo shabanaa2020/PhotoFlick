@@ -1,21 +1,22 @@
 //
-//  SectionHeaderView.swift
+//  SectionFooterView.swift
 //  PhotoFlick
 //
-//  Created by Shabana Sheik on 20/04/20.
+//  Created by Shabana Sheik on 08/05/20.
 //  Copyright © 2020 Shabana Sheik. All rights reserved.
 //
 
 import UIKit
 
-class SectionHeaderView: UICollectionReusableView {
+class SectionFooterView: UICollectionReusableView {
     
     let label: UILabel = {
         let label: UILabel = UILabel()
         label.textColor = .black
         label.backgroundColor = .clear
-        label.text = ""
-        label.font = UIFont.systemFont(ofSize: 18, weight: .bold)
+        //label.text = "noFavs".localized()
+        label.font = UIFont.systemFont(ofSize: 18, weight: .regular)
+        label.textAlignment = .center
         label.sizeToFit()
         return label
     }()
@@ -34,5 +35,4 @@ class SectionHeaderView: UICollectionReusableView {
         super.awakeFromNib()
         // Initialization code
     }
-    
 }

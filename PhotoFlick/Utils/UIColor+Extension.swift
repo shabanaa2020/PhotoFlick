@@ -18,10 +18,14 @@ extension CGFloat {
 extension UIColor {
     static func random() -> UIColor {
         return UIColor(
-           red:   .random(),
-           green: .random(),
-           blue:  .random(),
-           alpha: 1.0
+            red:   .random(),
+            green: .random(),
+            blue:  .random(),
+            alpha: 1.0
         )
+    }
+    
+    static var bgColor: UIColor {
+        return UIColor(red: 76/255, green: 56/255, blue: 26/255, alpha: 0.95)
     }
 }

@@ -16,32 +16,33 @@
                 <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Unknown.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Tzr-fl-bLA">
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Unknown.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="Tzr-fl-bLA" customClass="ImageLoader" customModule="PhotoFlick" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="150" height="150"/>
                     </imageView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z9d-ih-0YL">
-                        <rect key="frame" x="105" y="105" width="40" height="40"/>
+                        <rect key="frame" x="105" y="105" width="35" height="35"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="ig2-N9-JSZ"/>
-                            <constraint firstAttribute="height" constant="40" id="otV-Av-AHC"/>
+                            <constraint firstAttribute="width" constant="35" id="ig2-N9-JSZ"/>
+                            <constraint firstAttribute="height" constant="35" id="otV-Av-AHC"/>
                         </constraints>
                         <state key="normal" image="like_empty"/>
-                        <connections>
-                            <action selector="favouritesAction:" destination="gTV-IL-0wX" eventType="touchUpInside" id="Hgk-eF-mTN"/>
-                        </connections>
                     </button>
                 </subviews>
             </view>
             <constraints>
                 <constraint firstItem="Tzr-fl-bLA" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="8Iy-JM-hCg"/>
-                <constraint firstAttribute="trailing" secondItem="z9d-ih-0YL" secondAttribute="trailing" constant="5" id="C8f-my-nWu"/>
-                <constraint firstAttribute="bottom" secondItem="z9d-ih-0YL" secondAttribute="bottom" constant="5" id="EzU-qN-RJK"/>
+                <constraint firstAttribute="trailing" secondItem="z9d-ih-0YL" secondAttribute="trailing" constant="10" id="GHx-XJ-xet"/>
                 <constraint firstAttribute="bottom" secondItem="Tzr-fl-bLA" secondAttribute="bottom" id="QIl-6N-vke"/>
+                <constraint firstAttribute="bottom" secondItem="z9d-ih-0YL" secondAttribute="bottom" constant="10" id="S4y-99-aui"/>
                 <constraint firstAttribute="trailing" secondItem="Tzr-fl-bLA" secondAttribute="trailing" id="pcr-N2-SSJ"/>
                 <constraint firstItem="Tzr-fl-bLA" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="z8u-EO-aMa"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="308" height="212"/>
+            <connections>
+                <outlet property="favouriteBtn" destination="z9d-ih-0YL" id="vnx-lY-iiI"/>
+                <outlet property="imageVw" destination="Tzr-fl-bLA" id="eaY-pV-N1A"/>
+            </connections>
             <point key="canvasLocation" x="103" y="19"/>
         </collectionViewCell>
     </objects>

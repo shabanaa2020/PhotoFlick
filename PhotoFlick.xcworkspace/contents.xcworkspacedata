@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:DataModel.xcdatamodeld">
+   </FileRef>
+   <FileRef
       location = "group:PhotoFlick.xcodeproj">
    </FileRef>
    <FileRef

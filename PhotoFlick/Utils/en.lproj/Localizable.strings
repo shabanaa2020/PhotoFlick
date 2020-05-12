@@ -9,3 +9,6 @@
 "emailErrorMessage" = "Please enter valid user name";
 "passwordErrorMessage" = "Please enter valid password";
 "emptyFieldsMessage" = "Fields cannot be empty";
+"favsSectionTitle" = "MY FAVOURITES";
+"noFavs" = "No Favourites Available";
+"addComments" = "Add Comment";
