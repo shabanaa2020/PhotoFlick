@@ -35,23 +35,22 @@ class ViewController: UIViewController {
 
 //MARK:- Login Click
     @IBAction func onLoginAction(_ sender: Any) {
-        self.updateViewOnLoginSucess()
-//        resignFirstResponder()
-//        Loader.start(from: self.view)
-//        if validateFields() {
-//            viewModel.requestAuthorization(vc: self) { (error) in
-//                if let err = error {
-//                    print(err)
-//                }else {
-//                    self.updateViewOnLoginSucess()
-////                    self.viewModel.requestUserInformation(onSuccess: {
-////                        self.updateViewOnLoginSucess()
-////                    }) { (error) in
-////                        // TODO: Show alert for error
-////                    }
-//                }
-//            }
-//        }
+        resignFirstResponder()
+        Loader.start(from: self.view)
+        if validateFields() {
+            viewModel.requestAuthorization(vc: self) { (error) in
+                if let err = error {
+                    print(err)
+                }else {
+                    self.updateViewOnLoginSucess()
+//                    self.viewModel.requestUserInformation(onSuccess: {
+//                        self.updateViewOnLoginSucess()
+//                    }) { (error) in
+//                        // TODO: Show alert for error
+//                    }
+                }
+            }
+        }
     }
     
 // MARK:- Keyboard actions

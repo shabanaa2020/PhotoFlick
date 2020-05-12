@@ -118,5 +118,6 @@ extension CommentsCell: CommentsDetailCellProtocol {
     
     func editBntClicked(at index: Int) {
         self.commentsDelegate?.editBtnClicked(at: index)
+
     }
 }

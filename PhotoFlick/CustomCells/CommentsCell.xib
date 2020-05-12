@@ -114,6 +114,7 @@
                 <outlet property="noDataView" destination="rxS-O4-usQ" id="0wb-BT-Fvm"/>
             </connections>
             <point key="canvasLocation" x="-3021.0144927536235" y="-211.60714285714286"/>
+
         </tableViewCell>
     </objects>
 </document>

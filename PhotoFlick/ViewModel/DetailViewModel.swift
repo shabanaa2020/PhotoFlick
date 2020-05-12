@@ -24,7 +24,7 @@ class DetailViewModel {
             completion()
         }
     }
-    
+
     func bindFlickrPhoto(completion:@escaping () -> ()) {
         guard let photoID = photoObject?.id,
             let farm = photoObject?.farm ,

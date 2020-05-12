@@ -6,6 +6,11 @@ PhotoFlick.xcodeproj/xcuserdata/udziamko.xcuserdatad/xcschemes/xcschememanagemen
 PhotoFlick.xcworkspace/contents.xcworkspacedata
 PhotoFlick.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist
 PhotoFlick.xcworkspace/xcuserdata/udziamko.xcuserdatad/UserInterfaceState.xcuserstate
+<<<<<<< HEAD
+=======
+PhotoFlick.xcworkspace/xcuserdata/shabanasheik.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
+PhotoFlick.xcodeproj/xcuserdata/shabanasheik.xcuserdatad/xcschemes/xcschememanagement.plist
+>>>>>>> 2f8208a4e40e5c046d6ab4bbe8ff7ec147d12285
 Podfile.lock
 Pods/
 PhotoFlick.xcworkspace/

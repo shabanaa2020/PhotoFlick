@@ -28,12 +28,13 @@ class HomeViewController: UIViewController {
     fileprivate let favViewModel = FavouritesViewModel()
     fileprivate var showNoFavs = false
     fileprivate var favsVC = FavouritesViewController()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.isHidden = false
         self.navigationItem.title = viewModel.navigationTitle
         addBottomSheetView()
+
         menuArr = [AppConstants.leftMenuArray.Recents.rawValue, AppConstants.leftMenuArray.Favourites.rawValue]
         registerNibs()
         setUpMenu()
@@ -52,7 +53,7 @@ class HomeViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         slideMenuTbl.deselectRow(at: IndexPath(row: .zero, section: .zero), animated: false)
-    
+        
         if viewModel.photos.count > 0 {
             let id = UserDefaults.standard.integer(forKey: "PhotoTag")
             let dic = UserDefaults.standard.object(forKey: "isFavouriteSaved") as? Dictionary<String, Any>
@@ -158,7 +159,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         cell.backgroundColor = .clear
@@ -261,6 +262,5 @@ extension HomeViewController: DetailViewProtocol, RecentProtocol {
     func favBtnClicked(on image: UIImage?, with tag: Int?) {
         favsVC.onFavClicked(on: image, with: tag)
     }
-    
 }
 

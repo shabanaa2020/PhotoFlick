@@ -50,5 +50,4 @@ public struct AppConstants {
         static let emptyHeartImg = "like_empty"
         static let filledHeartImg = "like_full"
     }
-    
 }
