@@ -177,7 +177,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="98r-Yi-Sy9">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="394" height="50"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </collectionReusableView>
                                 <connections>
@@ -380,6 +380,94 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crh-Et-1Nr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-381.15942028985512" y="78.348214285714278"/>
+        </scene>
+        <!--Add Comment View Controller-->
+        <scene sceneID="Ybb-8A-Di6">
+            <objects>
+                <viewController storyboardIdentifier="AddCommentViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mgN-1y-7ps" customClass="AddCommentViewController" customModule="PhotoFlick" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KNr-ox-llV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ALk-01-wZo">
+                                <rect key="frame" x="20" y="124" width="374" height="211"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n1P-If-e0W" customClass="CustomButton" customModule="PhotoFlick" customModuleProvider="target">
+                                <rect key="frame" x="20" y="354" width="177" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="hNx-l9-mho"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" red="0.69803921570000005" green="0.35294117650000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.69803921570000005" green="0.35294117650000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cancelAction:" destination="mgN-1y-7ps" eventType="touchUpInside" id="Vtx-MM-hkR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l26-2a-Pb3" customClass="CustomButton" customModule="PhotoFlick" customModuleProvider="target">
+                                <rect key="frame" x="217" y="354" width="177" height="45"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Save">
+                                    <color key="titleColor" red="0.69803921570000005" green="0.35294117650000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.69803921570000005" green="0.35294117650000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="saveAction:" destination="mgN-1y-7ps" eventType="touchUpInside" id="CeO-So-cVK"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="l26-2a-Pb3" firstAttribute="width" secondItem="KNr-ox-llV" secondAttribute="width" multiplier="0.427536" id="7Ni-mt-c3s"/>
+                            <constraint firstItem="n1P-If-e0W" firstAttribute="baseline" secondItem="l26-2a-Pb3" secondAttribute="firstBaseline" id="7wa-q2-Mjw"/>
+                            <constraint firstItem="ALk-01-wZo" firstAttribute="centerX" secondItem="KNr-ox-llV" secondAttribute="centerX" id="8pm-BO-tx5"/>
+                            <constraint firstItem="ALk-01-wZo" firstAttribute="top" secondItem="gDD-ok-ZGA" secondAttribute="top" constant="80" id="9Am-3N-nvj"/>
+                            <constraint firstItem="n1P-If-e0W" firstAttribute="top" secondItem="ALk-01-wZo" secondAttribute="bottom" constant="19" id="AzI-FR-VJM"/>
+                            <constraint firstItem="ALk-01-wZo" firstAttribute="height" secondItem="KNr-ox-llV" secondAttribute="height" multiplier="0.235491" id="BGf-Uz-0S2"/>
+                            <constraint firstItem="n1P-If-e0W" firstAttribute="width" secondItem="KNr-ox-llV" secondAttribute="width" multiplier="0.427536" id="DaA-i2-5r2"/>
+                            <constraint firstItem="l26-2a-Pb3" firstAttribute="top" secondItem="ALk-01-wZo" secondAttribute="bottom" constant="19" id="Xyf-Aa-2ej"/>
+                            <constraint firstItem="l26-2a-Pb3" firstAttribute="leading" secondItem="n1P-If-e0W" secondAttribute="trailing" constant="20" id="f7L-ag-60w"/>
+                            <constraint firstItem="l26-2a-Pb3" firstAttribute="trailing" secondItem="ALk-01-wZo" secondAttribute="trailing" id="geh-ve-9kO"/>
+                            <constraint firstItem="ALk-01-wZo" firstAttribute="width" secondItem="KNr-ox-llV" secondAttribute="width" multiplier="0.903382" id="qvP-Ne-Cx8"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="gDD-ok-ZGA"/>
+                    </view>
+                    <connections>
+                        <outlet property="cancelBtn" destination="n1P-If-e0W" id="ObG-6s-qxh"/>
+                        <outlet property="saveBtn" destination="l26-2a-Pb3" id="u16-nh-kSh"/>
+                        <outlet property="textVw" destination="ALk-01-wZo" id="vQx-vm-gCE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Pt-bg-CwT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="242.0289855072464" y="78.348214285714278"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="gvT-JB-OuX">

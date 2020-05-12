@@ -12,3 +12,7 @@
 "favsSectionTitle" = "MY FAVOURITES";
 "noFavs" = "No Favourites Available";
 "addComments" = "Add Comment";
+"emptyComments" = "Comment cannot be empty.";
+"ok" = "OK";
+"error" = "Error";
+"addCommentTitle" = "Add New Comment";

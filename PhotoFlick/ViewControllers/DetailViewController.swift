@@ -50,7 +50,7 @@ class DetailViewController: UIViewController {
     }
 }
 
-extension DetailViewController: DetailProtocol, CommentsProtocol {
+extension DetailViewController: DetailProtocol, CommentsProtocol, AddCommentsProtocol {
     
     func favsBtnClicked(on image: UIImage?, senderSelected: Bool) {
         Loader.start(from: self.view)
@@ -68,22 +68,21 @@ extension DetailViewController: DetailProtocol, CommentsProtocol {
         detailsTableVw.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
     }
     
-    func saveCommentsClicked(with comment: String?) {
+    func saveCommentsClicked(with comment: String?, completion: @escaping (AddFavourite?) -> ()) {
         if let str = comment {
             Loader.start(from: self.view)
             viewModel.addComments(photoId: viewModel.photoId ?? "", commentTxt: str) { (response) in
                 Loader.stop()
-                self.presentAlertWithTitle(title: response?.stat ?? "", message: response?.message ?? "", options: "OK") { (option) in
-                }
-            }
-        }else {
-            self.presentAlertWithTitle(title: "Error", message: "Comment cannot be empty.", options: "OK") { (option) in
+                completion(response)
             }
         }
     }
     
     func editBtnClicked(at index: Int) {
-        
+        guard let addComments = AppUtilities.getMainStoryBoard().instantiateViewController(withIdentifier: AppConstants.StoryBoardIdentifiers.addComment_vc_identifier) as? AddCommentViewController else { return }
+        addComments.delegate = self
+        addComments.textViewText = viewModel.commentsList?[index]._content
+        self.navigationController?.pushViewController(addComments, animated: true)
     }
     
     func deleteBtnClicked(at index: Int) {

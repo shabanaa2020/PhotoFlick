@@ -61,6 +61,7 @@
 		5ABD3A3624697500007BECFE /* CommentsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABD3A3524697500007BECFE /* CommentsModel.swift */; };
 		5ABD3A392469C7A8007BECFE /* CommentDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ABD3A372469C7A8007BECFE /* CommentDetailCell.swift */; };
 		5ABD3A3A2469C7A8007BECFE /* CommentDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5ABD3A382469C7A8007BECFE /* CommentDetailCell.xib */; };
+		5AD254E8246AAF4100718BAE /* AddCommentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD254E7246AAF4100718BAE /* AddCommentViewController.swift */; };
 		5AD53E952446DBFF0038A950 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD53E942446DBFF0038A950 /* AppDelegate.swift */; };
 		5AD53E972446DBFF0038A950 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD53E962446DBFF0038A950 /* SceneDelegate.swift */; };
 		5AD53E992446DBFF0038A950 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AD53E982446DBFF0038A950 /* ViewController.swift */; };
@@ -136,6 +137,7 @@
 		5ABD3A3524697500007BECFE /* CommentsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsModel.swift; sourceTree = "<group>"; };
 		5ABD3A372469C7A8007BECFE /* CommentDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentDetailCell.swift; sourceTree = "<group>"; };
 		5ABD3A382469C7A8007BECFE /* CommentDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentDetailCell.xib; sourceTree = "<group>"; };
+		5AD254E7246AAF4100718BAE /* AddCommentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCommentViewController.swift; sourceTree = "<group>"; };
 		5AD53E912446DBFF0038A950 /* PhotoFlick.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoFlick.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AD53E942446DBFF0038A950 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5AD53E962446DBFF0038A950 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -232,6 +234,7 @@
 				5A547650244E1F7E009E41A1 /* DetailViewController.swift */,
 				5A2A94F22452270F00DB7328 /* RecentViewController.swift */,
 				5AED2D2F2469401500E3628F /* FavouritesViewController.swift */,
+				5AD254E7246AAF4100718BAE /* AddCommentViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -494,6 +497,7 @@
 				5A2A94DC2450801B00DB7328 /* FavouritesViewModel.swift in Sources */,
 				5A547635244D9659009E41A1 /* APIMethod.swift in Sources */,
 				5A2A94D0244F671F00DB7328 /* AppConstants.swift in Sources */,
+				5AD254E8246AAF4100718BAE /* AddCommentViewController.swift in Sources */,
 				5A2A94C9244F4FD000DB7328 /* Authorize.swift in Sources */,
 				5A2A94F524522A4300DB7328 /* RecentViewModel.swift in Sources */,
 				5AD53EA92447055A0038A950 /* UITextField_Extension.swift in Sources */,

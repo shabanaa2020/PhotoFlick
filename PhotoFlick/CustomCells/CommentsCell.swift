@@ -9,7 +9,6 @@
 import UIKit
 
 protocol CommentsProtocol {
-    func saveCommentsClicked(with comment: String?)
     func editBtnClicked(at index: Int)
     func deleteBtnClicked(at index: Int)
 }
@@ -26,12 +25,6 @@ class CommentsCell: UITableViewCell {
         commentsTableVw.register(CommentDetailCell.nib, forCellReuseIdentifier: CommentDetailCell.identifier)
         commentsTableVw.rowHeight = UITableView.automaticDimension
         commentsTableVw.estimatedRowHeight = 62
-        //        commentsTxtVw.layer.borderWidth = 1.0
-        //        commentsTxtVw.layer.borderColor = UIColor.lightGray.cgColor
-        //        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        //        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        //
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -50,35 +43,6 @@ class CommentsCell: UITableViewCell {
             self.commentsTableVw.isHidden = true
             self.noDataView.isHidden = false
         }
-    }
-    
-//    @IBAction func saveBtnAction(_ sender: UIButton) {
-//        if commentsTxtVw.text.count != 0 {
-//        self.endEditing(true)
-//        let str = commentsTxtVw.text.trimmingCharacters(in: .whitespacesAndNewlines)
-//        let escapedString = str.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)
-//        self.commentsDelegate?.saveCommentsClicked(with: escapedString)
-//        }else {
-//            self.commentsDelegate?.saveCommentsClicked(with: nil)
-//        }
-//    }
-    
-//    @objc func keyboardWillShow(notification: NSNotification) {
-//        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-//            if self.superview?.superview?.frame.origin.y == 0 {
-//                self.superview?.superview?.frame.origin.y -= keyboardSize.height
-//            }
-//        }
-//    }
-//
-//    @objc func keyboardWillHide(notification: NSNotification) {
-//        if self.superview?.superview?.frame.origin.y != 0 {
-//            self.superview?.superview?.frame.origin.y = 0
-//        }
-//    }
-    
-    @IBAction func addNewCommentAction(_ sender: Any) {
-        
     }
 }
 

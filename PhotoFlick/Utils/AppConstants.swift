@@ -17,6 +17,7 @@ public struct AppConstants {
         static let detail_vc_identifier = "DetailViewController"
         static let recent_vc_identifier = "RecentViewController"
         static let favourite_vc_identifier = "FavouritesViewController"
+        static let addComment_vc_identifier = "AddCommentViewController"
     }
     
     struct NumericConstants {
