@@ -45,6 +45,7 @@ class Authorize {
             case .success(let (credential, _, _)):
                 debugPrint("token = \(credential.oauthToken)")
                 completion(credential.oauthToken, nil)
+                DataManager.access_token = credential.oauthToken
             case .failure(let error):
                 print(error.description)
                 completion(nil, error)

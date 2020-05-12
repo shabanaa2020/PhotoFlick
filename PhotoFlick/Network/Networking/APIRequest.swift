@@ -18,7 +18,7 @@ struct HTTPNetworkRequest {
         guard let url = URL(string: url) else { fatalError("Error while unwrapping url")}
         
         var request = URLRequest(url: url, cachePolicy: .reloadIgnoringLocalCacheData, timeoutInterval: 10.0)
-        
+        request.addValue(DataManager.access_token, forHTTPHeaderField: "oauth_token")
         request.httpMethod = method.rawValue
         request.httpBody = body
         try configureParametersAndHeaders(parameters: parameters, headers: headers, request: &request)
