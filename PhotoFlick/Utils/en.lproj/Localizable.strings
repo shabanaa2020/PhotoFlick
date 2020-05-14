@@ -16,3 +16,9 @@
 "ok" = "OK";
 "error" = "Error";
 "addCommentTitle" = "Add New Comment";
+"fav_success_msg" = "Added to favourites successfully.";
+"fav_success_title" = "Success";
+"user_info_error" = "Unable to fetch user information. \n Please try  again.";
+"no_fav_msg" = "No Favourites Available";
+"y_axis_title" = "Number of Favorites";
+"x_axis_title" = "Date Favourited";

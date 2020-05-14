@@ -11,6 +11,7 @@ import UIKit
 protocol CommentsProtocol {
     func editBtnClicked(at index: Int)
     func deleteBtnClicked(at index: Int)
+    func addNewBtnClicked()
 }
 
 class CommentsCell: UITableViewCell {
@@ -44,6 +45,10 @@ class CommentsCell: UITableViewCell {
             self.noDataView.isHidden = false
         }
     }
+    
+    @IBAction func addNewComment(_ sender: UIButton) {
+        self.commentsDelegate?.addNewBtnClicked()
+    }
 }
 
 extension CommentsCell: UITableViewDelegate, UITableViewDataSource {
@@ -63,15 +68,10 @@ extension CommentsCell: UITableViewDelegate, UITableViewDataSource {
         return cell ?? UITableViewCell()
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//         return UITableView.automaticDimension
-//    }
-//    
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UIView()
         return footerView
     }
-      
 }
 
 extension CommentsCell: CommentsDetailCellProtocol {

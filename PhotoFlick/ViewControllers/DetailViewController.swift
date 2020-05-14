@@ -19,17 +19,20 @@ protocol DetailViewProtocol {
 }
 
 class DetailViewController: UIViewController {
-   
+    
     @IBOutlet weak var detailsTableVw: UITableView!
     var photoId: String?
     var photoObj: Photo?
     var photoTag: Int?
+    var favesArray: [String]? = []
     fileprivate let viewModel = DetailViewModel()
     var delegate: DetailViewProtocol?
+    var navTitle: String?
+    var favCountArray = [Int]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.title = viewModel.navigationTitle
+        self.navigationItem.title = navTitle
         registerNibs()
         detailsTableVw.rowHeight = UITableView.automaticDimension
         detailsTableVw.estimatedRowHeight = CGFloat(AppConstants.NumericConstants.estimated_row_height)
@@ -39,15 +42,20 @@ class DetailViewController: UIViewController {
         }
         viewModel.bindFlickrPhoto {
             DispatchQueue.main.async(execute: {
-            let indexPath = IndexPath(row: 0, section: 0)
-            self.detailsTableVw.reloadRows(at: [indexPath], with: .top)
+                let indexPath = IndexPath(row: Details.image.rawValue, section: .zero)
+                self.detailsTableVw.reloadRows(at: [indexPath], with: .top)
             })
         }
         viewModel.getCommentsList {
             self.reloadCommentsList()
         }
+        
+        viewModel.getPhotoFavourites {
+            self.processToPlotGraph()
+        }
         // Do any additional setup after loading the view.
     }
+    
 }
 
 extension DetailViewController: DetailProtocol, CommentsProtocol, AddCommentsProtocol {
@@ -88,14 +96,18 @@ extension DetailViewController: DetailProtocol, CommentsProtocol, AddCommentsPro
     func deleteBtnClicked(at index: Int) {
         let commentId = viewModel.commentsList?[index].id ?? ""
         viewModel.deleteComments(photoId: viewModel.photoId ?? "", commentId: commentId) { (response) in
-            Loader.stop()
-            self.presentAlertWithTitle(title: response?.stat ?? "", message: response?.message ?? "", options: "OK") { (option) in
-            }
+            self.showMessage(response: response)
             if response?.stat != "fail"{
                 self.viewModel.commentsList?.remove(at: index)
                 self.reloadCommentsList()
             }
         }
+    }
+    
+    func addNewBtnClicked() {
+        guard let addComments = AppUtilities.getMainStoryBoard().instantiateViewController(withIdentifier: AppConstants.StoryBoardIdentifiers.addComment_vc_identifier) as? AddCommentViewController else { return }
+        addComments.delegate = self
+        self.navigationController?.pushViewController(addComments, animated: true)
     }
 }
 
@@ -107,19 +119,41 @@ private extension DetailViewController {
         detailsTableVw.register(CommentsCell.nib, forCellReuseIdentifier: CommentsCell.identifier)
     }
     
+    func processToPlotGraph() {
+        var array = [Person]()
+        array = self.viewModel.photoFavs?.photo?.person ?? []
+        let dates = array.map {$0.favedate?.stringFromTimestamp()}
+        let values = dates
+        var countedDates = [String?]()
+        let countedSet = NSCountedSet(array: values as [Any])
+        for (key, value) in countedSet.dictionary {
+            print("Element:", key, "count:", value)
+            self.viewModel.favesCountArray.append(String(value)) // data point array to be plotted on graph
+            countedDates.append(key as? String)
+        }
+        
+        let isoFormatter = DateFormatter()
+        isoFormatter.dateFormat = AppConstants.GeneralConstants.dateFormat
+        var sortedDates = countedDates.sorted { isoFormatter.date(from: $0 ?? "")! > isoFormatter.date(from: $1 ?? "") ?? Date() }
+        print(sortedDates)
+        sortedDates = sortedDates.reversed() // Dates Array to be plotted on x axis
+        self.viewModel.datesArr = sortedDates
+        
+        DispatchQueue.main.async(execute: {
+            let indexPath = IndexPath(row: Details.graph.rawValue, section: .zero)
+            self.detailsTableVw.reloadRows(at: [indexPath], with: .none)
+        })
+    }
+    
     func addFav() {
         viewModel.addFavourite(photoId: viewModel.photoId ?? "") { (response) in
-            Loader.stop()
-            self.presentAlertWithTitle(title: response?.stat ?? "", message: response?.message ?? "", options: "OK") { (option) in
-            }
+            self.showMessage(response: response)
         }
     }
     
     func removeFav() {
         viewModel.removeFavourite(photoId: viewModel.photoId ?? "") { (response) in
-            Loader.stop()
-            self.presentAlertWithTitle(title: response?.stat ?? "", message: response?.message ?? "", options: "OK") { (option) in
-            }
+            self.showMessage(response: response)
         }
     }
     
@@ -134,7 +168,7 @@ private extension DetailViewController {
 extension DetailViewController : UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return AppConstants.NumericConstants.numberOfItemsPerRow
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -154,6 +188,7 @@ extension DetailViewController : UITableViewDelegate, UITableViewDataSource {
             return imageCell!
         case Details.graph.rawValue:
             let graphCell = tableView.dequeueReusableCell(withIdentifier:GraphCell.identifier) as? GraphCell
+                graphCell?.configureChart(dateArray: viewModel.datesArr as! [String], favsArray: viewModel.favesCountArray as? [String])
             return graphCell!
         case Details.comments.rawValue:
             let commentsCell = tableView.dequeueReusableCell(withIdentifier:CommentsCell.identifier) as? CommentsCell
@@ -165,3 +200,4 @@ extension DetailViewController : UITableViewDelegate, UITableViewDataSource {
         }
     }
 }
+

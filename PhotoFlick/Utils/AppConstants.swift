@@ -33,11 +33,20 @@ public struct AppConstants {
         static let leftMenuMinX = -240
         static let leftMenuMaxX = 240
         static let animationDuration = 0.3
+        static let shadowRadius = 10
+        static let bottomSheetBottomConstraint = 240
+        static let shadowOpacity = 1
+        static let leftMenuRowHeight = 50
+        static let leftMenuFontSize = 18
+        static let graphPadding = 25
+        static let maxFavsToFetch = 50
     }
     
     struct GeneralConstants {
         static let home_navigation_title = "HOME"
         static let recent_navigation_title = "RECENTS"
+        static let graphColor = "#fe117c"
+        static let dateFormat = "dd/MM/yyyy"
     }
     
     enum leftMenuArray: String {

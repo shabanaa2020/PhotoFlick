@@ -69,8 +69,8 @@ class ImageLoader: UIImageView {
 class LoadImages {
     
     func loadImages(url : URL) -> UIImage {
-        let data = try? Data(contentsOf: url)
-        if let image = UIImage(data: data!) {
+        guard let data = try? Data(contentsOf: url) else { return UIImage() }
+        if let image = UIImage(data: data) {
             return image
         }
         return UIImage()

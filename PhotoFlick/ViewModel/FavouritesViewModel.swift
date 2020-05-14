@@ -17,9 +17,9 @@ class FavouritesViewModel {
     var serverImageArray = [UIImage]()
     var cdImageArray = [UIImage]()
     var coreDataObject: ImageArrayRepresentation?
-
+    
     init() {
-        apiResource = ApiResource(method: HTTPNetworkRoute.favouritePhotos.rawValue, userId: HTTPNetworkRoute.userId.rawValue)
+        apiResource = ApiResource(method: HTTPNetworkRoute.favouritePhotos.rawValue, userId: DataManager.user_id)
     }
     
     func requestFavouritePhotos(completion:@escaping () -> ()) {
@@ -27,7 +27,7 @@ class FavouritesViewModel {
         if cdImageArray.count != 0 {
             completion()
         }else {
-            apiResource.getPhotos { (photos, error)  in
+            apiResource.getFavPhotos { (photos, error)  in
                 if let photoArr =  photos {
                     if photoArr.count != 0 {
                         self.photos = photoArr

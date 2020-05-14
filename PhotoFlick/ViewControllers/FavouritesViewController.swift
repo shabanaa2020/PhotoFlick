@@ -157,6 +157,7 @@ extension FavouritesViewController: UICollectionViewDelegate, UICollectionViewDa
         guard let home = AppUtilities.getMainStoryBoard().instantiateViewController(withIdentifier: AppConstants.StoryBoardIdentifiers.detail_vc_identifier) as? DetailViewController else { return }
         home.photoId = favViewModel.photos[indexPath.row].id
         home.photoObj = favViewModel.photos[indexPath.row]
+        home.navTitle = favViewModel.photos[indexPath.row].title
         self.navigationController?.pushViewController(home, animated: true)
     }
 }

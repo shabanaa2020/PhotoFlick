@@ -8,10 +8,15 @@
 
 import Foundation
 
+struct UserInfo: Codable {
+    var user : User?
+    var stat: String?
+}
+
 struct User: Codable {
     var id : String?
-    var username : UserName?
-    var stat: String?
+    var path_alias: String?
+    var username: UserName?
 }
 
 struct UserName: Codable {

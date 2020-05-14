@@ -17,6 +17,7 @@ struct Photos: Codable {
     let page : Int?
     let pages : Int?
     let perpage : Int?
+    let per_page: Int?
     let total : String?
     let photo : [Photo]?
 }
@@ -32,5 +33,6 @@ struct Photo: Codable {
     let isfriend : Int?
     let isfamily : Int?
     let date_faved: String?
+    let username: String?
     var isFaved: Bool?
 }

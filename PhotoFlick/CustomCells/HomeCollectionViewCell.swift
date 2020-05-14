@@ -20,10 +20,6 @@ class HomeCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        let origImage = UIImage(named: "like_empty")
-        let tintedImage = origImage?.withRenderingMode(.alwaysTemplate)
-        favouriteBtn.setImage(tintedImage, for: .normal)
-        favouriteBtn.tintColor = .red
         // Initialization code
     }
     

@@ -76,6 +76,7 @@ extension RecentViewController: UICollectionViewDelegate, UICollectionViewDataSo
         home.delegate = self
         home.photoId = viewModel.photos[indexPath.row].id
         home.photoObj = viewModel.photos[indexPath.row]
+        home.navTitle = viewModel.photos[indexPath.row].title
         home.photoTag = indexPath.row
         self.navigationController?.pushViewController(home, animated: true)
     }

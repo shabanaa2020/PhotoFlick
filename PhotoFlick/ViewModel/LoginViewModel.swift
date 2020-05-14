@@ -31,19 +31,14 @@ class LoginViewModel {
         }
     }
     
-    func requestUserInformation(onSuccess: @escaping(String) -> Void, onFailure: @escaping(Error) -> Void) {
-//        apiResource.getRequest{ (data, error) in
-//            do {
-//                let json = try JSONDecoder().decode(User.self, from: data ?? Data())
-////                if json.stat == "fail" {
-////                    onFailure(error!)
-////                }
-//                DataManager.user_id = json.id ?? ""
-//                DataManager.user_name = json.username?._content ?? ""
-//                onSuccess("")
-//            } catch {
-//                onFailure(error)
-//            }
-//        }
+    func requestUserInformation(onSuccess: @escaping(UserInfo?) -> Void, onFailure: @escaping(Error) -> Void) {
+        apiResource.getUserId() { (response, error) in
+            guard let err = error else {
+                DataManager.user_id = response?.user?.id ?? ""
+                onSuccess(response)
+                return
+            }
+            onFailure(err)
+        }
     }
 }

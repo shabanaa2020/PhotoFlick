@@ -17,16 +17,16 @@ class HomeViewModel {
     
     init() {
         navigationTitle = AppConstants.GeneralConstants.home_navigation_title
-        apiResource = ApiResource(method: HTTPNetworkRoute.publicPhotos.rawValue, userId: HTTPNetworkRoute.userId.rawValue)
+        apiResource = ApiResource(method: HTTPNetworkRoute.publicPhotos.rawValue, userId: DataManager.user_id)
     }
     
-    func requestAllPublicPhotos(completion:@escaping () -> ()) {
-        apiResource.getPhotos { (photos, error) in
+    func requestAllPublicPhotos(completion:@escaping (Error?) -> ()) {
+        apiResource.getPublicPhotos{ (photos, error) in
             if let arr = photos {
                 self.photos = arr
                 self.flickrPhoto = ParseFlickrPhoto(photos: self.photos)
                 self.flickrPhoto?.bindFlickrPhotos {
-                    completion()
+                    completion(error)
                 }
             }
         }

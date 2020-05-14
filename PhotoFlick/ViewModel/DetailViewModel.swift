@@ -15,7 +15,9 @@ class DetailViewModel {
     var photoUrl: FlickrPhoto?
     var photoId: String?
     var commentsList: [Comment]?
-    
+    var photoFavs: PhotoFavourites?
+    var datesArr: [String?] = []
+    var favesCountArray: [String?] = []
     
     func getCommentsList(completion:@escaping () -> ()) {
         let getCommentsApiResource = CommentsApiResource(method: HTTPNetworkRoute.commentsList.rawValue, userId: nil)
@@ -25,6 +27,14 @@ class DetailViewModel {
         }
     }
 
+    func getPhotoFavourites(completion:@escaping () -> ()) {
+        let getPhotoFavsApiResource = ApiResource(method: HTTPNetworkRoute.favouritesForPhoto.rawValue, userId: nil)
+        getPhotoFavsApiResource.getPhotoFavourites(urlString: getPhotoFavsApiResource.mapPhotoFavUrl(parameters: mapFavParams(with: photoId ?? ""))) { (response, error) in
+            self.photoFavs = response
+            completion()
+        }
+    }
+    
     func bindFlickrPhoto(completion:@escaping () -> ()) {
         guard let photoID = photoObject?.id,
             let farm = photoObject?.farm ,
@@ -45,36 +55,35 @@ class DetailViewModel {
     }
     
     func addFavourite(photoId: String, completion:@escaping (AddFavourite?) -> ()) {
-        
-        let favsPostAPI = PostFavouritesAPIResource(method: HTTPNetworkRoute.removeFavourite.rawValue, userId: nil)
+        let favsPostAPI = PostFavouritesAPIResource(method: HTTPNetworkRoute.addFavourite.rawValue, userId: nil)
         favsPostAPI.postService(urlString: favsPostAPI.mapUrl(parameters: mapFavParams(with: photoId))) { (response, error) in
             completion(response)
         }
     }
     
     func removeFavourite(photoId: String, completion:@escaping (AddFavourite?) -> ()) {
-        let favsPostApiResource = PostApiResource(method: HTTPNetworkRoute.removeFavourite.rawValue, userId: nil)
-        favsPostApiResource.postService(urlString: favsPostApiResource.mapUrl(parameters: mapFavParams(with: photoId))) { (response, error) in
+        let favsPostAPI = PostFavouritesAPIResource(method: HTTPNetworkRoute.removeFavourite.rawValue, userId: nil)
+        favsPostAPI.postService(urlString: favsPostAPI.mapUrl(parameters: mapFavParams(with: photoId))) { (response, error) in
             completion(response)
         }
     }
     
     func addComments(photoId: String, commentTxt: String, completion:@escaping (AddFavourite?) -> ()) {
-        let commentsPostApiResource = PostApiResource(method: HTTPNetworkRoute.addComment.rawValue, userId: nil)
-        commentsPostApiResource.postService(urlString: commentsPostApiResource.mapUrl(parameters: mapCommentsParams(with: photoId, comments: commentTxt))) { (response, error) in
+        let commentsPostAPI = PostFavouritesAPIResource(method: HTTPNetworkRoute.addComment.rawValue, userId: nil)
+        commentsPostAPI.postService(urlString: commentsPostAPI.mapUrl(parameters: mapCommentsParams(with: photoId, comments: commentTxt))) { (response, error) in
             completion(response)
         }
     }
     
     func deleteComments(photoId: String, commentId: String, completion:@escaping (AddFavourite?) -> ()) {
-        let commentsPostApiResource = PostApiResource(method: HTTPNetworkRoute.deleteComment.rawValue, userId: nil)
-        commentsPostApiResource.postService(urlString: commentsPostApiResource.mapUrl(parameters: mapDeleteCommentParams(with: photoId, commentId: commentId))) { (response, error) in
+        let commentsPostAPI = PostFavouritesAPIResource(method: HTTPNetworkRoute.deleteComment.rawValue, userId: nil)
+        commentsPostAPI.postService(urlString: commentsPostAPI.mapUrl(parameters: mapDeleteCommentParams(with: photoId, commentId: commentId))) { (response, error) in
             completion(response)
         }
     }
-    
+
     private func mapFavParams(with photoId: String) -> String {
-        let url = "&photo_id=\(photoId)"
+        let url = "&photo_id=\(photoId)&per_page=\(AppConstants.NumericConstants.maxFavsToFetch)"
         return url
     }
     

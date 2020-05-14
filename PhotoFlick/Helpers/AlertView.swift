@@ -23,4 +23,19 @@ extension UIViewController {
         self.present(alertController, animated: true, completion: nil)
         })
     }
+    
+    func showMessage(response: AddFavourite?) {
+        Loader.stop()
+        var msg = String()
+        var title = String()
+        if response?.stat == "fail"{
+            title = response?.stat ?? ""
+            msg = response?.message ?? ""
+        }else {
+            msg = "fav_success_msg".localized()
+            title = "fav_success_title".localized()
+        }
+        self.presentAlertWithTitle(title: title, message: msg, options: "ok".localized()) { (option) in
+        }
+    }
 }

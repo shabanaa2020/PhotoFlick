@@ -42,12 +42,12 @@ class ViewController: UIViewController {
                 if let err = error {
                     print(err)
                 }else {
-                    self.updateViewOnLoginSucess()
-//                    self.viewModel.requestUserInformation(onSuccess: {
-//                        self.updateViewOnLoginSucess()
-//                    }) { (error) in
-//                        // TODO: Show alert for error
-//                    }
+                    self.viewModel.requestUserInformation(onSuccess: { (success) in
+                        self.updateViewOnLoginSucess()
+                    }) { (error) in
+                        self.presentAlertWithTitle(title: "error".localized(), message: "user_info_error".localized(), options: "ok".localized()) { (option) in
+                        }
+                    }
                 }
             }
         }
@@ -55,14 +55,20 @@ class ViewController: UIViewController {
     
 // MARK:- Keyboard actions
     @objc func keyboardWillShow(notification: NSNotification) {
-        if self.view.frame.origin.y == 0 {
-            self.view.frame.origin.y -= 150
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if self.view.frame.origin.y == 0 {
+                self.view.frame.origin.y -= keyboardSize.height
+            }
         }
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
-        if self.view.frame.origin.y != 0 {
-            self.view.frame.origin.y = 0
+        func keyboardWillHide(notification: Notification) {
+            if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+                if self.view.frame.origin.y != 0 {
+                    self.view.frame.origin.y += keyboardSize.height
+                }
+            }
         }
     }
 }
@@ -104,12 +110,12 @@ private extension ViewController {
             return false
         }
         if validation.isEmpty(textField: userNameTf) || validation.isEmpty(textField: passwordTf) {
-            showErrorLable(errorMsg: NSLocalizedString("emptyFieldsMessage", comment: ""))
+            showErrorLable(errorMsg: "emptyFieldsMessage".localized())
             return false
         }
         let isValidateEmail = self.validation.validateEmailId(emailID: email)
         if isValidateEmail == false {
-            showErrorLable(errorMsg: NSLocalizedString("emailErrorMessage", comment: ""))
+            showErrorLable(errorMsg: "emailErrorMessage".localized())
             return false
         }
         hideErrorLable()

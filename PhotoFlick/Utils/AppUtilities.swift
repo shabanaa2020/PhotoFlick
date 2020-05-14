@@ -42,3 +42,13 @@ extension Array {
     }
 }
 
+extension NSCountedSet {
+    var occurences: [(object: Any, count: Int)] { map { ($0, count(for: $0))} }
+    var dictionary: [AnyHashable: Int] {
+        reduce(into: [:]) {
+            guard let key = $1 as? AnyHashable else { return }
+            $0[key] = count(for: key)
+        }
+    }
+}
+
