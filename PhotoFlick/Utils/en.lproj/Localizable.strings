@@ -14,6 +14,7 @@
 "addComments" = "Add Comment";
 "emptyComments" = "Comment cannot be empty.";
 "ok" = "OK";
+"success" = "Success";
 "error" = "Error";
 "addCommentTitle" = "Add New Comment";
 "fav_success_msg" = "Added to favourites successfully.";
@@ -22,3 +23,6 @@
 "no_fav_msg" = "No Favourites Available";
 "y_axis_title" = "Number of Favorites";
 "x_axis_title" = "Date Favourited";
+"comments_success_msg" = "Comment saved successfully";
+"comments_error_msg" = "Oops! \n Something went wrong";
+"comment_delete_msg" = "Comment Deleted Successfully";

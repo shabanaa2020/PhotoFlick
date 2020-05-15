@@ -8,25 +8,15 @@
 
 import Foundation
 
-class ApiResource {
+class ApiResource: APIClient {
     
-    var method: String
-    var userId: String?
-    let baseUrl   = ApiConstants.shared.baseUrl
-    let apiKey = ApiConstants.shared.apiKey
-    let format = ApiConstants.shared.format
-    // MARK: - Lifecycle
-    
-    init(method: String, userId: String?) {
-        self.method = method
-        self.userId = userId
-    }
+    var session: URLSession = URLSession(configuration: .default)
     
     let postSession = URLSession(configuration: .default)
     
     func getFavPhotos(_ completion: @escaping ([Photo]?, HTTPNetworkError?) -> ()) {
         
-        OauthService.shared.oauthswift?.client.get(mapUrl(), completionHandler: { (result) in
+        OauthService.shared.oauthswift?.client.get(Endpoint(method: HTTPNetworkRoute.favouritePhotos.rawValue, userId: DataManager.user_id, params: nil).mapUrl(), completionHandler: { (result) in
             switch(result) {
             case .success(let response):
                 let jsonDict = try? response.jsonObject()
@@ -43,7 +33,7 @@ class ApiResource {
     
     func getPublicPhotos(_ completion: @escaping ([Photo]?, HTTPNetworkError?) -> ()) {
         
-        OauthService.shared.oauthswift?.client.get(mapUrl(), completionHandler: { (result) in
+        OauthService.shared.oauthswift?.client.get(Endpoint(method: HTTPNetworkRoute.publicPhotos.rawValue, userId: DataManager.user_id, params: nil).mapUrl(), completionHandler: { (result) in
             switch(result) {
             case .success(let response):
                 let jsonDict = try? response.jsonObject()
@@ -58,35 +48,19 @@ class ApiResource {
         })
     }
     
-    func getPhotoFavourites(urlString: String, _ completion: @escaping (PhotoFavourites?, HTTPNetworkError?) -> ()) {
-        do{
-            let request = try HTTPNetworkRequest.configureHTTPRequest(from: urlString
-            , with: [:], includes: [:], contains: nil, and: .get)
-            postSession.dataTask(with: request){ (data, res, err) in
-                
-                if let response = res as? HTTPURLResponse, let unwrappedData = data {
-                    
-                    let result = HTTPNetworkResponse.handleNetworkResponse(for: response)
-                    switch result {
-                    case .success:
-                        let result = try? JSONDecoder().decode(PhotoFavourites.self, from: unwrappedData)
-                        if let res = result {
-                            completion(res, nil)
-                        }
-                        
-                    case .failure:
-                        completion(nil, HTTPNetworkError.decodingFailed)
-                    }
-                }
-            }.resume()
-        }catch{
-            completion(nil, HTTPNetworkError.badRequest)
-        }
+    func getPhotoFavourites(urlString: String, _ completion: @escaping (Result<PhotoFavourites?, HTTPNetworkError>) -> ()) {
+        guard let request = try? HTTPNetworkRequest.configureHTTPRequest(from: urlString
+            , with: [:], includes: [:], contains: nil, and: .get) else { return }
+        
+        callAPI(with: request, decode: { json -> PhotoFavourites? in
+            guard let model = json as? PhotoFavourites else { return nil }
+            return model
+        }, completion: completion)
     }
     
     func getUserId(_ completion: @escaping (UserInfo?, HTTPNetworkError?) -> ()) {
         
-        OauthService.shared.oauthswift?.client.get(mapUrl(), completionHandler: { (result) in
+        OauthService.shared.oauthswift?.client.get(Endpoint(method: HTTPNetworkRoute.testLogin.rawValue, userId: nil, params: nil).mapUrl(), completionHandler: { (result) in
             switch(result) {
             case .success(let response):
                 let jsonDict = try? response.jsonObject()
@@ -100,20 +74,9 @@ class ApiResource {
             }
         })
     }
-    
-    func mapUrl() -> String {
-        let base: String
-        let extras: String = "&extras=isfavorite,count_faves"
-        if let userId = self.userId {
-            base = baseUrl + "?method=\(self.method)&api_key=\(apiKey)&user_id=\(userId)\(extras)&per_page=500\(format)"
-        }else {
-            base = baseUrl + "?method=\(self.method)&api_key=\(apiKey)\(extras)&per_page=500\(format)"
-        }
-        return base
-    }
-    
-    func mapPhotoFavUrl(parameters: String) -> String {
-        let base = baseUrl + "?method=\(self.method)&api_key=\(apiKey)&extras=count_faves\(parameters)\(format)"
-        return base
-    }
+//
+//    func mapPhotoFavUrl(parameters: String) -> String {
+//        let base =  baseUrl + "?method=\(self.method)&api_key=\(apiKey)&extras=count_faves\(parameters)\(format)"
+//        return base
+//    }
 }

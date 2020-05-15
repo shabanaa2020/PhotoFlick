@@ -16,7 +16,6 @@ protocol CommentsProtocol {
 
 class CommentsCell: UITableViewCell {
 
-    @IBOutlet weak var noDataView: UIView!
     @IBOutlet weak var commentsTableVw: UITableView!
     var commentsDelegate: CommentsProtocol?
     var commentsArray: [Comment]?
@@ -37,17 +36,12 @@ class CommentsCell: UITableViewCell {
     func bindData(commentsArray: [Comment]?) {
         self.commentsArray = commentsArray
         if let _ = commentsArray {
-            self.noDataView.isHidden = true
             self.commentsTableVw.isHidden = false
+            self.commentsTableVw.reloadData()
             self.contentView.layoutIfNeeded()
         }else {
             self.commentsTableVw.isHidden = true
-            self.noDataView.isHidden = false
         }
-    }
-    
-    @IBAction func addNewComment(_ sender: UIButton) {
-        self.commentsDelegate?.addNewBtnClicked()
     }
 }
 

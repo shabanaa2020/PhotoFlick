@@ -11,23 +11,28 @@ import Foundation
 class RecentViewModel {
 
     var photos: [Photo] = []
-    var apiResource: RecentApiResource
     var flickrPhoto: ParseFlickrPhoto?
     var navigationTitle: String
     
     init() {
         navigationTitle = AppConstants.GeneralConstants.recent_navigation_title
-        apiResource = RecentApiResource(method: HTTPNetworkRoute.recentPhotos.rawValue, userId: nil)
     }
     
-    func requestRecentPhotos(completion:@escaping () -> ()) {
-        apiResource.getRecentPhotos{ (photos, error) in
-            if let arr = photos {
-                self.photos = arr
-                self.flickrPhoto = ParseFlickrPhoto(photos: self.photos)
-                self.flickrPhoto?.bindFlickrPhotos {
-                    completion()
+    func requestRecentPhotos(completion:@escaping (HTTPNetworkError?) -> ()) {
+        let apiResource = RecentApiResource()
+        let endpoint = Endpoint(method: HTTPNetworkRoute.recentPhotos.rawValue, userId: nil, params: nil)
+        apiResource.getRecentPhotos(urlString: endpoint.mapUrl()) { (response) in
+            switch response {
+            case .success(let result):
+                if let arr = result?.photos?.photo {
+                    self.photos = arr
+                    self.flickrPhoto = ParseFlickrPhoto(photos: self.photos)
+                    self.flickrPhoto?.bindFlickrPhotos {
+                        completion(nil)
+                    }
                 }
+            case .failure(let error):
+                completion(error)
             }
         }
     }

@@ -8,32 +8,16 @@
 
 import Foundation
 
-class RecentApiResource: ApiResource {
- 
-    func getRecentPhotos(_ completion: @escaping ([Photo]?, HTTPNetworkError?) -> ()) {
-        do{
-            let request = try HTTPNetworkRequest.configureHTTPRequest(from: mapUrl()
-            , with: [:], includes: [:], contains: nil, and: .get)
-            postSession.dataTask(with: request){ (data, res, err) in
-                
-                if let response = res as? HTTPURLResponse, let unwrappedData = data {
-                    
-                    let result = HTTPNetworkResponse.handleNetworkResponse(for: response)
-                    switch result {
-                    case .success:
-                        let result = try? JSONDecoder().decode(RecentPhotos.self, from: unwrappedData)
-                        if let res = result {
-                            completion(res.photos?.photo, nil)
-                        }
-                        
-                    case .failure:
-                        completion(nil, HTTPNetworkError.decodingFailed)
-                    }
-                }
-            }.resume()
-        }catch{
-            completion(nil, HTTPNetworkError.badRequest)
-        }
-
+class RecentApiResource: APIClient {
+    
+    var session: URLSession = URLSession(configuration: .default)
+    
+    func getRecentPhotos(urlString: String, _ completion: @escaping (Result<RecentPhotos?, HTTPNetworkError>) -> ()) {
+        guard let request = try? HTTPNetworkRequest.configureHTTPRequest(from: urlString
+            , with: [:], includes: [:], contains: nil, and: .get) else { return }
+        callAPI(with: request, decode: { json -> RecentPhotos? in
+            guard let model = json as? RecentPhotos else { return nil }
+            return model
+        }, completion: completion)
     }
 }

@@ -12,14 +12,13 @@ import UIKit
 class FavouritesViewModel {
  
     var photos: [Photo] = []
-    var apiResource: ApiResource
     var flickrPhoto: ParseFlickrPhoto?
     var serverImageArray = [UIImage]()
     var cdImageArray = [UIImage]()
     var coreDataObject: ImageArrayRepresentation?
     
     init() {
-        apiResource = ApiResource(method: HTTPNetworkRoute.favouritePhotos.rawValue, userId: DataManager.user_id)
+        //apiResource = ApiResource(method: HTTPNetworkRoute.favouritePhotos.rawValue, userId: DataManager.user_id)
     }
     
     func requestFavouritePhotos(completion:@escaping () -> ()) {
@@ -27,6 +26,7 @@ class FavouritesViewModel {
         if cdImageArray.count != 0 {
             completion()
         }else {
+            let apiResource = ApiResource()
             apiResource.getFavPhotos { (photos, error)  in
                 if let photoArr =  photos {
                     if photoArr.count != 0 {

@@ -11,16 +11,15 @@ import Foundation
 class HomeViewModel {
     
     var photos: [Photo] = []
-    var apiResource: ApiResource
     var navigationTitle: String
     var flickrPhoto: ParseFlickrPhoto?
     
     init() {
         navigationTitle = AppConstants.GeneralConstants.home_navigation_title
-        apiResource = ApiResource(method: HTTPNetworkRoute.publicPhotos.rawValue, userId: DataManager.user_id)
     }
     
     func requestAllPublicPhotos(completion:@escaping (Error?) -> ()) {
+        let apiResource = ApiResource()
         apiResource.getPublicPhotos{ (photos, error) in
             if let arr = photos {
                 self.photos = arr

@@ -11,6 +11,7 @@ import AAInfographics
 
 class GraphCell: UITableViewCell {
 
+    @IBOutlet weak var chartBgView: UIView!
     var chartView = AAChartView()
     
     override func awakeFromNib() {
@@ -24,21 +25,19 @@ class GraphCell: UITableViewCell {
     }
     
     func configureChart(dateArray: [String], favsArray: [String]?) {
-        let chartViewWidth  = self.frame.size.width - 50
-        let chartViewHeight = self.frame.size.height
-        let chartFrame = CGRect(x:0,y:25,width:chartViewWidth,height:chartViewHeight-25)
-        
+        let chartFrame = chartBgView.frame
         if dateArray.count == 0 {
             let noDataLbl = UILabel(frame: chartFrame)
             noDataLbl.text = "no_fav_msg".localized()
             noDataLbl.textColor = .systemPink
             noDataLbl.textAlignment = .center
             noDataLbl.font = UIFont.systemFont(ofSize: CGFloat(AppConstants.NumericConstants.leftMenuFontSize))
-            self.addSubview(noDataLbl)
+            chartBgView.addSubview(noDataLbl)
             return
         }
         chartView.frame = chartFrame
-        self.addSubview(chartView)
+        chartBgView.addSubview(chartView)
+        addConstraints(to: chartView)
         guard let doubles = favsArray?.compactMap(Double.init) else { return }
         let aaChartModel = AAChartModel()
             .chartType(.bubble)//Can be any of the chart types listed under `AAChartType`.

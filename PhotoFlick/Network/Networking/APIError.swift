@@ -26,4 +26,9 @@ public enum HTTPNetworkError: String, Error {
     case pageNotFound = "Error Found : Page/Route rquested not found."
     case failed = "Error Found : Network Request failed"
     case serverSideError = "Error Found : Server error"
+    case invalidData = "Invalid Data"
+    case requestFailed = "Request Failed"
+    case jsonConversionFailure = "JSON Conversion Failure"
+    case jsonParsingFailure = "JSON Parsing Failure"
+    case responseUnsuccessful = "Response Unsuccessful"
 }

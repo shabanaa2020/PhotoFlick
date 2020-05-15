@@ -21,67 +21,17 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="COMMENTS" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pQ7-6C-kOf">
                                 <rect key="frame" x="10" y="8" width="441" height="21"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rxS-O4-usQ">
-                                <rect key="frame" x="69.5" y="37" width="320" height="218"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Comments Available" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOo-UB-dH1">
-                                        <rect key="frame" x="69" y="57" width="182" height="21"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="21" id="HLh-yl-qir"/>
-                                            <constraint firstAttribute="width" constant="182" id="smD-qK-ZLw"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="70q-XK-KQR" customClass="CustomButton" customModule="PhotoFlick" customModuleProvider="target">
-                                        <rect key="frame" x="60" y="92" width="200" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="4yk-KS-J4Q"/>
-                                            <constraint firstAttribute="width" constant="200" id="VVZ-gc-92Q"/>
-                                        </constraints>
-                                        <state key="normal" title="Add New Comment">
-                                            <color key="titleColor" red="0.69803921570000005" green="0.35294117650000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                <real key="value" value="1"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="5"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" red="0.69803921570000005" green="0.35294117650000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="addNewComment:" destination="FDU-Dj-dVX" eventType="touchUpInside" id="uRG-pP-y6s"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="OOo-UB-dH1" firstAttribute="centerX" secondItem="rxS-O4-usQ" secondAttribute="centerX" id="IPc-fA-DfL"/>
-                                    <constraint firstItem="70q-XK-KQR" firstAttribute="top" secondItem="OOo-UB-dH1" secondAttribute="bottom" constant="14" id="Q4a-cb-GdU"/>
-                                    <constraint firstItem="OOo-UB-dH1" firstAttribute="top" secondItem="rxS-O4-usQ" secondAttribute="top" constant="57" id="S9D-Kl-Ha5"/>
-                                    <constraint firstItem="70q-XK-KQR" firstAttribute="centerX" secondItem="rxS-O4-usQ" secondAttribute="centerX" id="j9m-QR-ThQ"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="rxS-O4-usQ" firstAttribute="height" secondItem="y5g-Q4-jNG" secondAttribute="height" multiplier="0.801471" id="Bh1-i5-Qbd"/>
                             <constraint firstAttribute="trailing" secondItem="pQ7-6C-kOf" secondAttribute="trailing" constant="8" id="DXw-Kj-kKB"/>
                             <constraint firstItem="pQ7-6C-kOf" firstAttribute="top" secondItem="y5g-Q4-jNG" secondAttribute="top" constant="8" id="NxW-zH-IJx"/>
-                            <constraint firstItem="rxS-O4-usQ" firstAttribute="width" secondItem="y5g-Q4-jNG" secondAttribute="width" multiplier="0.697168" id="S0Q-XX-rm1"/>
-                            <constraint firstItem="rxS-O4-usQ" firstAttribute="top" secondItem="pQ7-6C-kOf" secondAttribute="bottom" constant="8" id="i5x-t5-dlE"/>
                             <constraint firstItem="pQ7-6C-kOf" firstAttribute="leading" secondItem="y5g-Q4-jNG" secondAttribute="leading" constant="10" id="qCl-ex-RRh"/>
-                            <constraint firstItem="rxS-O4-usQ" firstAttribute="centerX" secondItem="y5g-Q4-jNG" secondAttribute="centerX" id="vOp-0T-py2"/>
-                            <constraint firstAttribute="bottom" secondItem="rxS-O4-usQ" secondAttribute="bottom" constant="17" id="x8e-kv-Zx5"/>
                         </constraints>
                     </view>
                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="D2N-vg-aSc">
@@ -111,7 +61,6 @@
             <viewLayoutGuide key="safeArea" id="Xbu-Q5-3y6"/>
             <connections>
                 <outlet property="commentsTableVw" destination="D2N-vg-aSc" id="ijw-wG-4Tx"/>
-                <outlet property="noDataView" destination="rxS-O4-usQ" id="0wb-BT-Fvm"/>
             </connections>
             <point key="canvasLocation" x="-3021.0144927536235" y="-211.60714285714286"/>
         </tableViewCell>

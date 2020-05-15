@@ -34,8 +34,8 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         self.navigationItem.title = navTitle
         registerNibs()
-        detailsTableVw.rowHeight = UITableView.automaticDimension
-        detailsTableVw.estimatedRowHeight = CGFloat(AppConstants.NumericConstants.estimated_row_height)
+        detailsTableVw.rowHeight = 300
+        //detailsTableVw.estimatedRowHeight = CGFloat(AppConstants.NumericConstants.estimated_row_height)
         if let id = photoId {
             viewModel.photoId = id
             viewModel.photoObject = photoObj
@@ -46,17 +46,31 @@ class DetailViewController: UIViewController {
                 self.detailsTableVw.reloadRows(at: [indexPath], with: .top)
             })
         }
-        viewModel.getCommentsList {
-            self.reloadCommentsList()
+        loadComments()
+        viewModel.getPhotoFavourites { error in
+            if let err = error {
+                self.presentAlertWithTitle(title: "", message: err.localizedDescription, options: "ok".localized()) { (option) in }
+            }else {
+                self.processToPlotGraph()
+            }
         }
-        
-        viewModel.getPhotoFavourites {
-            self.processToPlotGraph()
+    }
+   
+    func loadComments() {
+        viewModel.getCommentsList { error in
+            if let err = error {
+                self.presentAlertWithTitle(title: "", message: err.localizedDescription, options: "ok".localized()) { (option) in }
+            }else {
+                self.reloadCommentsList()
+            }
         }
-        // Do any additional setup after loading the view.
     }
     
+    @IBAction func addNewCommentAction(_ sender: Any) {
+        addNewBtnClicked()
+    }
 }
+
 
 extension DetailViewController: DetailProtocol, CommentsProtocol, AddCommentsProtocol {
     
@@ -76,27 +90,38 @@ extension DetailViewController: DetailProtocol, CommentsProtocol, AddCommentsPro
         detailsTableVw.reloadRows(at: [IndexPath(row: 0, section: 0)], with: .automatic)
     }
     
-    func saveCommentsClicked(with comment: String?, completion: @escaping (AddFavourite?) -> ()) {
+    func saveCommentsClicked(with comment: String?, commentId: String?, isEdit: CommentType, completion: @escaping (AddCommentResponse?) -> ()) {
         if let str = comment {
-            Loader.start(from: self.view)
-            viewModel.addComments(photoId: viewModel.photoId ?? "", commentTxt: str) { (response) in
-                Loader.stop()
-                completion(response)
+            switch isEdit {
+            case .new:
+                viewModel.addComments(photoId: viewModel.photoId ?? "", commentTxt: str) { (response) in
+                    Loader.stop()
+                    completion(response)
+                }
+            case .edit:
+                viewModel.editComments(commentId: commentId ?? "", commentTxt: str) { (response) in
+                    Loader.stop()
+                    completion(response)
+                }
             }
+            loadComments()
         }
     }
     
     func editBtnClicked(at index: Int) {
         guard let addComments = AppUtilities.getMainStoryBoard().instantiateViewController(withIdentifier: AppConstants.StoryBoardIdentifiers.addComment_vc_identifier) as? AddCommentViewController else { return }
         addComments.delegate = self
-        addComments.textViewText = viewModel.commentsList?[index]._content
+        addComments.commentModel = viewModel.commentsList?[index]
+        addComments.editType = .edit
         self.navigationController?.pushViewController(addComments, animated: true)
     }
     
     func deleteBtnClicked(at index: Int) {
+        Loader.start(from: self.view)
         let commentId = viewModel.commentsList?[index].id ?? ""
         viewModel.deleteComments(photoId: viewModel.photoId ?? "", commentId: commentId) { (response) in
-            self.showMessage(response: response)
+            Loader.stop()
+            self.presentAlertWithTitle(title: "success".localized(), message: "comment_delete_msg".localized(), options: "ok".localized()) { (option) in }
             if response?.stat != "fail"{
                 self.viewModel.commentsList?.remove(at: index)
                 self.reloadCommentsList()
@@ -175,6 +200,10 @@ extension DetailViewController : UITableViewDelegate, UITableViewDataSource {
         let footerView = UIView()
         return footerView
     }
+    
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 400
+//    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {

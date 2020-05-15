@@ -29,7 +29,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="5wf-qN-Bi2">
                                 <rect key="frame" x="40" y="252" width="334" height="160"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="shabana@123.com" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wOQ-j3-MJ9" customClass="CustomTextField" customModule="PhotoFlick" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wOQ-j3-MJ9" customClass="CustomTextField" customModule="PhotoFlick" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="334" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -43,7 +43,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="sf" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c4J-Nm-nsQ" customClass="CustomTextField" customModule="PhotoFlick" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c4J-Nm-nsQ" customClass="CustomTextField" customModule="PhotoFlick" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="70" width="334" height="40"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
@@ -225,20 +225,47 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="400" estimatedRowHeight="400" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="FM9-Xu-jgF">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="772"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <connections>
                                     <outlet property="dataSource" destination="fRM-bl-SSP" id="cSO-8p-nqq"/>
                                     <outlet property="delegate" destination="fRM-bl-SSP" id="EKJ-VZ-0Sb"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vbN-Tx-Qsu" customClass="CustomButton" customModule="PhotoFlick" customModuleProvider="target">
+                                <rect key="frame" x="82" y="830" width="250" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="250" id="6eK-hC-eub"/>
+                                    <constraint firstAttribute="height" constant="38" id="I5E-nE-uo6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                <state key="normal" title="Add New Comment">
+                                    <color key="titleColor" red="0.69803921570000005" green="0.35294117650000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.69803921570000005" green="0.35294117650000001" blue="0.13725490200000001" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addNewCommentAction:" destination="fRM-bl-SSP" eventType="touchUpInside" id="gfi-Ko-bCw"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="vbN-Tx-Qsu" firstAttribute="top" secondItem="FM9-Xu-jgF" secondAttribute="bottom" constant="14" id="39D-f7-Kat"/>
+                            <constraint firstItem="vbN-Tx-Qsu" firstAttribute="centerX" secondItem="ogW-ox-kLN" secondAttribute="centerX" id="Bfd-Uf-woj"/>
                             <constraint firstItem="FM9-Xu-jgF" firstAttribute="leading" secondItem="jXY-8i-xJs" secondAttribute="leading" id="EEL-Dq-CCQ"/>
                             <constraint firstItem="jXY-8i-xJs" firstAttribute="trailing" secondItem="FM9-Xu-jgF" secondAttribute="trailing" id="RHS-gh-YD0"/>
                             <constraint firstItem="FM9-Xu-jgF" firstAttribute="top" secondItem="jXY-8i-xJs" secondAttribute="top" id="Z0Y-FL-MgC"/>
-                            <constraint firstItem="jXY-8i-xJs" firstAttribute="bottom" secondItem="FM9-Xu-jgF" secondAttribute="bottom" id="d58-ry-rPq"/>
+                            <constraint firstAttribute="bottom" secondItem="vbN-Tx-Qsu" secondAttribute="bottom" constant="28" id="amA-Od-efu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="jXY-8i-xJs"/>
                     </view>

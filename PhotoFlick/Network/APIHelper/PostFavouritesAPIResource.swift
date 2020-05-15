@@ -27,6 +27,23 @@ class PostFavouritesAPIResource: ApiResource {
         })
     }
     
+    func postCommentsService(urlString: String, _ completion: @escaping (AddCommentResponse?, HTTPNetworkError?) -> ()) {
+        
+        OauthService.shared.oauthswift?.client.post(urlString, completionHandler: { (result) in
+            switch(result) {
+            case .success(let response):
+                let jsonDict = try? response.jsonObject()
+                print(jsonDict as Any)
+                let result = try? JSONDecoder().decode(AddCommentResponse.self, from: response.data)
+                completion(result, nil)
+                break;
+            case .failure(let error):
+                print(error)
+                break;
+            }
+        })
+    }
+    
     func checkAccessToken(urlString: String, _ completion: @escaping (CheckAccessTokenModel?, HTTPNetworkError?) -> ()) {
         
         OauthService.shared.oauthswift?.client.get(urlString, completionHandler: { (result) in
@@ -43,8 +60,8 @@ class PostFavouritesAPIResource: ApiResource {
         
     }
     
-    func mapUrl(parameters: String) -> String {
-        let base = baseUrl + "?method=\(self.method)&api_key=\(apiKey)\(parameters)\(format)"
-        return base
-    }
+//    func mapUrl(parameters: String) -> String {
+//        let base = baseUrl + "?method=\(self.method)&api_key=\(apiKey)\(parameters)\(format)"
+//        return base
+//    }
 }

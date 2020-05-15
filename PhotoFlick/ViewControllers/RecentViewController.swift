@@ -23,12 +23,16 @@ class RecentViewController: UIViewController {
         self.navigationItem.title = viewModel.navigationTitle
         registerNibs()
         Loader.start(from: self.view)
-        viewModel.requestRecentPhotos {
-            print("get recent photos done = ", self.viewModel.photos.count)
-            DispatchQueue.main.async(execute: {
-                self.recentPhotosCollectionVw.reloadData()
-                Loader.stop()
-            })
+        viewModel.requestRecentPhotos { error in
+            if let err = error {
+                self.presentAlertWithTitle(title: "", message: err.localizedDescription, options: "ok".localized()) { (option) in }
+            }else {
+                print("get recent photos done = ", self.viewModel.photos.count)
+                DispatchQueue.main.async(execute: {
+                    self.recentPhotosCollectionVw.reloadData()
+                    Loader.stop()
+                })
+            }
         }
         // Do any additional setup after loading the view.
     }

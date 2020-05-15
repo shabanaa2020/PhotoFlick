@@ -26,19 +26,21 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GTH-3V-upD">
-                                <rect key="frame" x="69.5" y="37" width="320" height="218"/>
+                                <rect key="frame" x="9" y="37" width="441" height="218"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="GTH-3V-upD" firstAttribute="width" secondItem="D2h-UK-ScA" secondAttribute="width" multiplier="0.697168" id="FcN-9s-N3w"/>
+                            <constraint firstAttribute="trailing" secondItem="GTH-3V-upD" secondAttribute="trailing" constant="9" id="IlU-1K-Pvl"/>
                             <constraint firstItem="GTH-3V-upD" firstAttribute="top" secondItem="049-5s-k0L" secondAttribute="bottom" constant="8" id="MMU-I8-Iij"/>
                             <constraint firstItem="GTH-3V-upD" firstAttribute="centerX" secondItem="D2h-UK-ScA" secondAttribute="centerX" id="NSP-8H-2xw"/>
                             <constraint firstItem="GTH-3V-upD" firstAttribute="height" secondItem="D2h-UK-ScA" secondAttribute="height" multiplier="0.801471" id="PUO-Hd-wDu"/>
+                            <constraint firstItem="GTH-3V-upD" firstAttribute="leading" secondItem="D2h-UK-ScA" secondAttribute="leading" constant="9" id="TG1-qJ-GuO"/>
                             <constraint firstItem="049-5s-k0L" firstAttribute="top" secondItem="D2h-UK-ScA" secondAttribute="top" constant="8" id="hmT-zu-gRR"/>
                             <constraint firstItem="049-5s-k0L" firstAttribute="leading" secondItem="D2h-UK-ScA" secondAttribute="leading" constant="10" id="nPy-ty-PjR"/>
                             <constraint firstAttribute="bottom" secondItem="GTH-3V-upD" secondAttribute="bottom" constant="17" id="qe3-RI-nWa"/>
+                            <constraint firstItem="GTH-3V-upD" firstAttribute="width" secondItem="049-5s-k0L" secondAttribute="width" id="rKF-xh-OwI"/>
                             <constraint firstAttribute="trailing" secondItem="049-5s-k0L" secondAttribute="trailing" constant="8" id="xi9-xF-rqH"/>
                         </constraints>
                     </view>
@@ -54,6 +56,9 @@
                 <constraint firstItem="njF-e1-oar" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailing" id="50b-SN-XGx"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="chartBgView" destination="GTH-3V-upD" id="va9-RR-ult"/>
+            </connections>
             <point key="canvasLocation" x="-2938.4057971014495" y="-119.19642857142857"/>
         </tableViewCell>
     </objects>

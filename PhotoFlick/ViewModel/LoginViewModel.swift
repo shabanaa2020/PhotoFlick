@@ -12,11 +12,11 @@ import UIKit
 class LoginViewModel {
     
     let authorize: Authorize
-    let apiResource: ApiResource
+   // let apiResource: ApiResource
     
     init() {
         authorize = Authorize()
-        apiResource = ApiResource(method: HTTPNetworkRoute.testLogin.rawValue, userId: nil)
+        //apiResource = ApiResource(method: HTTPNetworkRoute.testLogin.rawValue, userId: nil)
     }
     
     func requestAuthorization(vc: UIViewController, completion:@escaping (Error?) -> ()) {
@@ -32,6 +32,7 @@ class LoginViewModel {
     }
     
     func requestUserInformation(onSuccess: @escaping(UserInfo?) -> Void, onFailure: @escaping(Error) -> Void) {
+        let apiResource = ApiResource()
         apiResource.getUserId() { (response, error) in
             guard let err = error else {
                 DataManager.user_id = response?.user?.id ?? ""

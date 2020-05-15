@@ -8,36 +8,15 @@
 
 import Foundation
 
-class CommentsApiResource: ApiResource {
+class CommentsApiResource: APIClient {
     
-    func getCommentsList(urlString: String, _ completion: @escaping (CommentsList?, HTTPNetworkError?) -> ()) {
-        do{
-            let request = try HTTPNetworkRequest.configureHTTPRequest(from: urlString
-                , with: [:], includes: [:], contains: nil, and: .get)
-            postSession.dataTask(with: request){ (data, res, err) in
-                
-                if let response = res as? HTTPURLResponse, let unwrappedData = data {
-                    
-                    let result = HTTPNetworkResponse.handleNetworkResponse(for: response)
-                    switch result {
-                    case .success:
-                        let result = try? JSONDecoder().decode(CommentsList.self, from: unwrappedData)
-                        if let res = result {
-                            completion(res, nil)
-                        }
-                        
-                    case .failure:
-                        completion(nil, HTTPNetworkError.decodingFailed)
-                    }
-                }
-            }.resume()
-        }catch{
-            completion(nil, HTTPNetworkError.badRequest)
-        }
-    }
-    
-    func mapUrl(parameters: String) -> String {
-        let base = baseUrl + "?method=\(self.method)&api_key=\(apiKey)\(parameters)\(format)"
-        return base
+    var session: URLSession = URLSession(configuration: .default)
+    func getCommentsList(urlString: String, _ completion: @escaping (Result<CommentsList?, HTTPNetworkError>) -> ()) {
+        guard let request = try? HTTPNetworkRequest.configureHTTPRequest(from: urlString
+            , with: [:], includes: [:], contains: nil, and: .get) else { return }
+            callAPI(with: request, decode: { json -> CommentsList? in
+                guard let model = json as? CommentsList else { return nil }
+                return model
+            }, completion: completion)
     }
 }
