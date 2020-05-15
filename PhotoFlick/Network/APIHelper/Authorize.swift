@@ -19,9 +19,9 @@ class Authorize {
         let oauthswift = OAuth1Swift(
             consumerKey:   ApiConstants.shared.apiKey,
             consumerSecret: ApiConstants.shared.apiSecret,
-            requestTokenUrl: "\(ApiConstants.shared.OAuthBaseUrl)/request_token",
-            authorizeUrl:    "\(ApiConstants.shared.OAuthBaseUrl)/authorize",
-            accessTokenUrl:  "\(ApiConstants.shared.OAuthBaseUrl)/access_token"
+            requestTokenUrl: "\(ApiConstants.shared.OAuthBaseUrl)/request_token\(ApiConstants.shared.OAuthScope)",
+            authorizeUrl:    "\(ApiConstants.shared.OAuthBaseUrl)/authorize\(ApiConstants.shared.OAuthScope)",
+            accessTokenUrl:  "\(ApiConstants.shared.OAuthBaseUrl)/access_token\(ApiConstants.shared.OAuthScope)"
         )
         
         self.oauthswift = oauthswift
@@ -37,7 +37,6 @@ class Authorize {
             let controller = SFSafariViewController(url: url)
             return controller
         }
-        
         oauthswift.authorizeURLHandler = handler
         let _ = oauthswift.authorize(
         withCallbackURL: URL(string: ApiConstants.shared.OAuthCallBackUrl)!) { result in

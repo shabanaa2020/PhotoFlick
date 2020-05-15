@@ -121,10 +121,19 @@ extension DetailViewController: DetailProtocol, CommentsProtocol, AddCommentsPro
         let commentId = viewModel.commentsList?[index].id ?? ""
         viewModel.deleteComments(photoId: viewModel.photoId ?? "", commentId: commentId) { (response) in
             Loader.stop()
-            self.presentAlertWithTitle(title: "success".localized(), message: "comment_delete_msg".localized(), options: "ok".localized()) { (option) in }
-            if response?.stat != "fail"{
-                self.viewModel.commentsList?.remove(at: index)
-                self.reloadCommentsList()
+            if response?.stat == "fail"{
+                self.presentAlertWithTitle(title: response?.stat ?? "error".localized(), message: response?.message ?? "comments_error_msg".localized()
+                , options: "ok".localized()) { (option) in }
+            }else if response?.stat == "ok"{
+                self.presentAlertWithTitle(title: "success".localized(), message: "comment_delete_msg".localized(), options: "ok".localized()) { (option) in
+                    switch option{
+                    case 0:
+                        self.viewModel.commentsList?.remove(at: index)
+                        self.reloadCommentsList()
+                    default:
+                        break
+                    }
+                }
             }
         }
     }

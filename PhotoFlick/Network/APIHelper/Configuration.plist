@@ -8,6 +8,8 @@
 	<string>65ead63c79c0bfc9</string>
 	<key>OAuthBaseUrl</key>
 	<string>https://www.flickr.com/services/oauth</string>
+	<key>OAuthScope</key>
+	<string>?scope=read,write,account&amp;expiration=never&amp;name=FickrApp</string>
 	<key>apiBase</key>
 	<string>https://api.flickr.com/services/rest/</string>
 	<key>apiFormat</key>

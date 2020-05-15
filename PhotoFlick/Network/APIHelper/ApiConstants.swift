@@ -19,6 +19,7 @@ final class ApiConstants: NSObject {
     let apiKey: String
     let apiSecret: String
     let OAuthBaseUrl: String
+    let OAuthScope: String
     let OAuthCallBackUrl: String
     let baseUrl: String
     let format: String
@@ -36,6 +37,7 @@ final class ApiConstants: NSObject {
         guard let apiKey = configDictionary["apiKey"] as? String,
             let apiSecret = configDictionary["apiSecret"] as? String,
             let OAuthBaseUrl = configDictionary["OAuthBaseUrl"] as? String,
+            let OAuthScope = configDictionary["OAuthScope"] as? String,
             let OAuthCallBackUrl = configDictionary["OAuthCallBackUrl"] as? String else {
                 fatalError("Something went wrong when loading apiKey/apiSecret..")
                 
@@ -52,6 +54,7 @@ final class ApiConstants: NSObject {
         self.apiKey = apiKey
         self.apiSecret = apiSecret
         self.OAuthBaseUrl = OAuthBaseUrl
+        self.OAuthScope = OAuthScope
         self.OAuthCallBackUrl = OAuthCallBackUrl
         self.baseUrl = baseUrl
         self.format = format

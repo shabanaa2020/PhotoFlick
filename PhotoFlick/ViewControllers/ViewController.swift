@@ -36,12 +36,14 @@ class ViewController: UIViewController {
 //MARK:- Login Click
     @IBAction func onLoginAction(_ sender: Any) {
         resignFirstResponder()
-        Loader.start(from: self.view)
         if validateFields() {
             viewModel.requestAuthorization(vc: self) { (error) in
                 if let err = error {
                     print(err)
                 }else {
+                    DispatchQueue.main.async(execute: {
+                    Loader.start(from: self.view)
+                    })
                     self.viewModel.requestUserInformation(onSuccess: { (success) in
                         self.updateViewOnLoginSucess()
                     }) { (error) in
