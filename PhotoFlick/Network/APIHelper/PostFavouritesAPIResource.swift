@@ -44,6 +44,23 @@ class PostFavouritesAPIResource: ApiResource {
         })
     }
     
+    func putService(urlString: String, _ completion: @escaping (AddFavourite?, HTTPNetworkError?) -> ()) {
+        
+        OauthService.shared.oauthswift?.client.put(urlString, completionHandler: { (result) in
+            switch(result) {
+            case .success(let response):
+                let jsonDict = try? response.jsonObject()
+                print(jsonDict as Any)
+                let result = try? JSONDecoder().decode(AddFavourite.self, from: response.data)
+                completion(result, nil)
+                break;
+            case .failure(let error):
+                print(error)
+                break;
+            }
+        })
+    }
+    
     func checkAccessToken(urlString: String, _ completion: @escaping (CheckAccessTokenModel?, HTTPNetworkError?) -> ()) {
         
         OauthService.shared.oauthswift?.client.get(urlString, completionHandler: { (result) in

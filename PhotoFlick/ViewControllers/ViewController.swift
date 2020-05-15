@@ -37,13 +37,11 @@ class ViewController: UIViewController {
     @IBAction func onLoginAction(_ sender: Any) {
         resignFirstResponder()
         if validateFields() {
+            Loader.start(from: self.view)
             viewModel.requestAuthorization(vc: self) { (error) in
                 if let err = error {
                     print(err)
                 }else {
-                    DispatchQueue.main.async(execute: {
-                    Loader.start(from: self.view)
-                    })
                     self.viewModel.requestUserInformation(onSuccess: { (success) in
                         self.updateViewOnLoginSucess()
                     }) { (error) in

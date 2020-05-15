@@ -102,7 +102,7 @@ class DetailViewModel {
     func deleteComments(photoId: String, commentId: String, completion:@escaping (AddFavourite?) -> ()) {
         let endpoint = Endpoint(method: HTTPNetworkRoute.deleteComment.rawValue, userId: nil, params: mapDeleteCommentParams(with: photoId, commentId: commentId))
         let commentsPostAPI = PostFavouritesAPIResource()
-        commentsPostAPI.postService(urlString: endpoint.mapUrl()) { (response, error) in
+        commentsPostAPI.putService(urlString: endpoint.mapUrl()) { (response, error) in
             completion(response)
         }
     }

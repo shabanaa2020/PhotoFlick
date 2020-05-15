@@ -19,9 +19,9 @@ class Authorize {
         let oauthswift = OAuth1Swift(
             consumerKey:   ApiConstants.shared.apiKey,
             consumerSecret: ApiConstants.shared.apiSecret,
-            requestTokenUrl: "\(ApiConstants.shared.OAuthBaseUrl)/request_token\(ApiConstants.shared.OAuthScope)",
-            authorizeUrl:    "\(ApiConstants.shared.OAuthBaseUrl)/authorize\(ApiConstants.shared.OAuthScope)",
-            accessTokenUrl:  "\(ApiConstants.shared.OAuthBaseUrl)/access_token\(ApiConstants.shared.OAuthScope)"
+            requestTokenUrl: "\(ApiConstants.shared.OAuthBaseUrl)/request_token",
+            authorizeUrl:    "\(ApiConstants.shared.OAuthBaseUrl)/authorize", //?perms=write
+            accessTokenUrl:  "\(ApiConstants.shared.OAuthBaseUrl)/access_token"
         )
         
         self.oauthswift = oauthswift
